@@ -1,0 +1,33 @@
+{
+    "name": "tcytra/enraiged-core",
+    "description": "Enraiged Core is the core library required by various Enraiged Laravel projects.",
+    "keywords": ["core", "enraiged"],
+    "homepage": "https://github.com/tcytra/enraiged-core",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Todd Cytra",
+            "email": "tcytra@gmail.com"
+        }
+    ],
+    "require": {
+        "laravel/framework": "^12.0",
+        "tcytra/enraiged-support": "^0.4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Enraiged\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Enraiged\\CoreServiceProvider",
+                "Enraiged\\UserServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
