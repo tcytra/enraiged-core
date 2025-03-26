@@ -4,25 +4,9 @@ namespace Enraiged\Users\Observers;
 
 use Enraiged\Users\Models\User;
 use Enraiged\Users\Notifications\LoginChangeNotification;
-use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 
 class UserObserver
 {
-    /**
-     *  Handle the User creating event.
-     *
-     *  @param  \Enraiged\Users\Models\User  $user
-     *  @return void
-     *
-     *  @throws ConflictHttpException
-     */
-    public function deleting(User $user): void
-    {
-        if ($user->is_protected) {
-            throw new ConflictHttpException(__('auth.protected'));
-        }
-    }
-
     /**
      *  Handle the User saving event.
      *

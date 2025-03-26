@@ -19,6 +19,14 @@ class LoginChangeNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        $message = (new MailMessage)
+            ->subject(__('Login Change'));
+
+        if (config('enraiged.app.mail_markdown') === true) {
+            return $message
+                ->markdown('mail.auth.login.change', ['user' => $notifiable]);
+        }
+
         return (new MailMessage)
             ->greeting(__('Hello :name', ['name' => $notifiable->name]))
             ->line(__('There have been changes to your account login.'))

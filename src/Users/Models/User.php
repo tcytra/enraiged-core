@@ -16,6 +16,7 @@ class User extends Authenticatable
         Traits\CanResetPassword,
         Traits\HasSecondaryCredential,
         Traits\MustVerifyEmail,
+        Traits\MustVerifySecondary,
         HasFactory, Notifiable, SoftDeletes, Tracking;
 
     /** @var  string  The database table name. */
@@ -40,6 +41,8 @@ class User extends Authenticatable
      *  @var list<string>
      */
     protected $hidden = [
+        'is_hidden',
+        'is_protected',
         'password',
         'remember_token',
     ];
