@@ -35,6 +35,11 @@ class UserServiceProvider extends ServiceProvider
             \Enraiged\Users\Listeners\VerifiedListener::class,
         );
 
+        Event::listen(
+            \Enraiged\NetworkAddresses\Events\LoginAddress::class,
+            \Enraiged\Users\Listeners\LoginAddressListener::class,
+        );
+
         Relation::morphMap([
             'user' => $model,
         ]);

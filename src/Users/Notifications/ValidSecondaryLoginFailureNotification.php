@@ -33,4 +33,15 @@ class ValidSecondaryLoginFailureNotification extends Notification implements Sho
             ->line('This email address must be validated before a log in will succeed.')
             ->line('Please log in with your primary email address and navigate to your profile to send a new verification email.');
     }
+
+    /**
+     *  Get the notification's delivery channels.
+     *
+     *  @param  mixed  $notifiable
+     *  @return array
+     */
+    public function via($notifiable)
+    {
+        return $notifiable->notificationChannels();
+    }
 }

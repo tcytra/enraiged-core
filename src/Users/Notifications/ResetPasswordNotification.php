@@ -36,4 +36,15 @@ class ResetPasswordNotification extends Notification implements ShouldQueue
             ->line(__('This password reset link will expire in :count minutes.', ['count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire')]))
             ->line(__('If you did not request a password reset, no further action is required.'));
     }
+
+    /**
+     *  Get the notification's delivery channels.
+     *
+     *  @param  mixed  $notifiable
+     *  @return array
+     */
+    public function via($notifiable)
+    {
+        return $notifiable->notificationChannels();
+    }
 }

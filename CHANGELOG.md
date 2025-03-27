@@ -1,5 +1,21 @@
 # Release Notes
 
+2025-03-27 : 0.4.0-beta.3 (prerelease)  
+Update: Added core structure for ip address tracking, notifications
+
+- Added Enraiged\NetworkAddresses namespace
+  - Added Enraiged\NetworkAddresses\Events\LoginAddress event
+  - Added Enraiged\NetworkAddresses\Models\IpAddress model
+- Added Enraiged\Users\Listeners\LoginAddressListener
+  - Updated UserServiceProvider
+- Added Enraiged\Users\Notifications\LoginAddressNotification
+- Added User::notificationChannels method to return default channels
+    - Updated all notifications to call User::notificationChannels()
+- Updated User model; Added relation to IpAddress
+- Updated publish directory with current auth,users systems
+
+---
+
 2025-03-26 : 0.4.0-beta.2 (prerelease)  
 Update: Added verification requirement for secondary email address
 

@@ -35,4 +35,15 @@ class VerifyEmailNotification extends Notification implements ShouldQueue
             ->action(__('Verify Email Address'), $verificationUrl)
             ->line(__('If you did not create an account, no further action is required.'));
     }
+
+    /**
+     *  Get the notification's delivery channels.
+     *
+     *  @param  mixed  $notifiable
+     *  @return array
+     */
+    public function via($notifiable)
+    {
+        return $notifiable->notificationChannels();
+    }
 }

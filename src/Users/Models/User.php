@@ -12,7 +12,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Relations\HasPasswordHistory,
+    use Relations\HasNetworkAddresses,
+        Relations\HasPasswordHistory,
         Traits\CanResetPassword,
         Traits\HasSecondaryCredential,
         Traits\MustVerifyEmail,
@@ -72,6 +73,16 @@ class User extends Authenticatable
     protected static function newFactory()
     {
         return new UserFactory;
+    }
+
+    /**
+     *  Return the notification channels for this user.
+     *
+     *  @return array<string>
+     */
+    public function notificationChannels()
+    {
+        return ['mail'];
     }
 
     /**
