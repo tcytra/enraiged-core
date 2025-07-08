@@ -21,10 +21,12 @@ class UserObserver
 
         if ($user->isDirty('email')) {
             $user->email = strtolower($user->email);
+            $user->email_verified_at = null;
         }
 
         if ($user->isDirty('username') && $user->usernameIsEmailAddress) {
             $user->username = strtolower($user->username);
+            $user->secondary_verified_at = null;
         }
     }
 
@@ -45,6 +47,16 @@ class UserObserver
                     (new LoginChangeNotification)
                         ->locale($user->locale)
                 );
+            }
+
+            if ($changed->keys()->contains('email')
+                    && config('enraiged.auth.must_verify_email') === true) {
+                $user->sendEmailVerificationNotification()();
+            }
+
+            if ($changed->keys()->contains('username') && $user->usernameIsEmailAddress
+                    && config('enraiged.auth.must_verify_secondary') === true) {
+                $user->sendSecondaryVerificationNotification();
             }
         }
     }

@@ -1,5 +1,13 @@
 # Release Notes
 
+2025-07-08 : 0.4.0-beta.4 (prerelease)  
+Update: Improvements to the UserObserver::{saving,updated} handlers
+
+- Ensure the email,secondary notifications are sent when user updated
+- Ensure the verified_at dates are reset when necessary
+
+---
+
 2025-03-27 : 0.4.0-beta.3 (prerelease)  
 Update: Added core structure for ip address tracking, notifications
 
