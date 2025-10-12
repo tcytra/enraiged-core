@@ -1,5 +1,13 @@
 # Release Notes
 
+2025-11-12 : 0.4.0-beta.5 (prerelease)  
+Update: Added theme column to the users database table
+
+- Added 'theme' to the User::fillable
+- Added UserObserver json encoding to the theme attribute when saving
+
+---
+
 2025-07-08 : 0.4.0-beta.4 (prerelease)  
 Update: Improvements to the UserObserver::{saving,updated} handlers
 

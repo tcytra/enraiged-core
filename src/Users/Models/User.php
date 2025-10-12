@@ -33,6 +33,7 @@ class User extends Authenticatable
         'locale',
         'name',
         'password',
+        'theme',
         'username',
     ];
 

@@ -24,6 +24,10 @@ class UserObserver
             $user->email_verified_at = null;
         }
 
+        if ($user->isDirty('theme') && gettype($user->theme) === 'array') {
+            $user->theme = json_encode($user->theme);
+        }
+
         if ($user->isDirty('username') && $user->usernameIsEmailAddress) {
             $user->username = strtolower($user->username);
             $user->secondary_verified_at = null;
