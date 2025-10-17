@@ -32,6 +32,10 @@ class UserObserver
             $user->username = strtolower($user->username);
             $user->secondary_verified_at = null;
         }
+
+        if (is_null($user->theme)) {
+            $user->theme = json_encode(config('enraiged.theme'));
+        }
     }
 
     /**
