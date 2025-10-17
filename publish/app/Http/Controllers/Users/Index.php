@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Controllers\Dashboard;
+namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use Inertia\Response as InertiaResponse;
 
-class Show extends Controller
+class Index extends Controller
 {
     /**
-     *  Display the dashboard component.
-     *
      *  @return \Inertia\Response
      */
     public function __invoke(): InertiaResponse
     {
-        return inertia('Dashboard');
+        $props = [];
+
+        return inertia('users/Index', $props);
     }
 }
