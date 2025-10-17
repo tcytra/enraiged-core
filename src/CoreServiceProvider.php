@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 class CoreServiceProvider extends ServiceProvider
 {
     /**
-     *  Bootstrap any application services.
+     *  Bootstrap the enraiged core services.
      *
      *  @return void
      */
@@ -45,17 +45,17 @@ class CoreServiceProvider extends ServiceProvider
 
         $this->publishes(
             [__DIR__.'/../publish/app/Http/Controllers' => base_path('app/Http/Controllers')],
-            ['enraiged-core-controllers'],
+            ['enraiged', 'enraiged-core', 'enraiged-core-controllers'],
         );
 
         $this->publishes(
             [__DIR__.'/../publish/app/Http/Middleware' => base_path('app/Http/Middleware')],
-            ['enraiged-core-middleware'],
+            ['enraiged', 'enraiged-core', 'enraiged-core-middleware'],
         );
 
         $this->publishes(
             [__DIR__.'/../publish/app/Http/Requests' => base_path('app/Http/Requests')],
-            ['enraiged-core-requests'],
+            ['enraiged', 'enraiged-core', 'enraiged-core-requests'],
         );
 
         $this->publishes(
@@ -75,17 +75,17 @@ class CoreServiceProvider extends ServiceProvider
 
         $this->publishes(
             [__DIR__.'/../publish/database/migrations' => database_path('migrations')],
-            ['enraiged-core-migrations'],
+            ['enraiged', 'enraiged-core', 'enraiged-core-migrations'],
         );
 
         $this->publishes(
             [__DIR__.'/../publish/database/seeders' => database_path('seeders')],
-            ['enraiged-core-seeders'],
+            ['enraiged', 'enraiged-core', 'enraiged-core-seeders'],
         );
 
         $this->publishes(
             [__DIR__.'/../publish/lang' => base_path('lang')],
-            ['enraiged', 'enraiged-core', 'enraiged-lang'],
+            ['enraiged', 'enraiged-core', 'enraiged-core-lang'],
         );
 
         $this->publishes(
@@ -95,17 +95,17 @@ class CoreServiceProvider extends ServiceProvider
 
         $this->publishes(
             [__DIR__.'/../publish/resources/seeds' => resource_path('seeds')],
-            ['enraiged-core-seeds'],
+            ['enraiged', 'enraiged-core', 'enraiged-core-seeds'],
         );
 
         $this->publishes(
             [__DIR__.'/../publish/resources/views' => resource_path('views')],
-            ['enraiged-core-views'],
+            ['enraiged', 'enraiged-core', 'enraiged-core-views'],
         );
 
         $this->publishes(
             [__DIR__.'/../publish/resources/views/mail' => resource_path('views/mail')],
-            ['enraiged-core-mail-views'],
+            ['enraiged', 'enraiged-core', 'enraiged-core-mail-views'],
         );
 
         $this->publishes(
