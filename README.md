@@ -1,37 +1,35 @@
 # Enraiged Core
 
-Enraiged Core is the core library required by various Enraiged Laravel projects.
+**Enraiged Core provides the user/authentication systems required by Enraiged Laravel projects.**
 
-## About Enraiged
+> **Please Note:** This package is currently a work in progress and not yet ready for production use.
 
-> **Please Note:** This library is currently a work in progress and not yet ready for production use.
+Enraiged Core is an aggregate library containing the core systems for Enraiged projects for handling users and 
+authtication. This package will update the default `users` database table with additional columns and create other 
+tables to provide a more robust set of available features and options for your Laravel project.
 
-The Enraiged system is built atop the Laravel framework and is intended to provide various additional features and 
-functionality to simplify initial project set-up and readiness.
+It may be prefereable to use the [Enraiged Laravel](https://github.com/tcytra/enraiged-laravel) package, which is 
+effectively an install of Enraiged Core into a new Laravel/Laravel project, with all assets published and a Vue 
+front-end driven by Inertia.js.
 
-The driving philosophy behind Enraiged is to **help, not hinder** the developer in getting a project from first install
-through to production.
 
-## Install Enraiged Core
+## Usage
 
-> **Please Note:** At the current time it is not recommended to manually require enraiged-core into a fresh install of
-Laravel. **The ability to install/publish the necessary files is incomplete.**
-
-Enraiged Core is an aggregate library containing the core systems for Enraiged projects. It is recommended to use the 
-[Enraiged Breeze](https://github.com/tcytra/enraiged-breeze) or 
-[Enraiged Laravel](https://github.com/tcytra/enraiged-laravel) repositories available on Github.
-
-That said, you may use composer to manually install Enraiged Core into your Laravel project:
+Install the Enraiged Core package to your Laravel project using composer:
 
 ```sh
 composer require tcytra/enraiged-core
 ```
 
-Then, use Laravel Artisan to publish the Enraiged Core assets to your project:
+Publish the Enraiged Core assets to the local project:
 
 ```sh
+rm resources/views/welcome.blade.php &&
+rm database/factories/UserFactory.php &&
+rmdir database/factories &&
 php artisan vendor:publish --tag=enraiged-core --ansi --force
 ```
+
 
 ## License
 

@@ -12,7 +12,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    use Relations\HasNetworkAddresses,
+    use Relations\BelongsToProfile,
+        Relations\HasNetworkAddresses,
         Relations\HasPasswordHistory,
         Traits\CanResetPassword,
         Traits\HasSecondaryCredential,
@@ -33,6 +34,7 @@ class User extends Authenticatable
         'locale',
         'name',
         'password',
+        'profile_id',
         'theme',
         'username',
     ];
@@ -54,6 +56,7 @@ class User extends Authenticatable
      *
      *  @return array<string, string>
      */
+    #[\Override]
     protected function casts(): array
     {
         return [

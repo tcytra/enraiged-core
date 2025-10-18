@@ -2,6 +2,7 @@
 
 namespace Enraiged\Users\Factories;
 
+use Enraiged\Profiles\Models\Profile;
 use Enraiged\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
@@ -22,8 +23,13 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $profile = Profile::factory()
+            ->create();
+
         return [
-            'email' => $this->faker->unique()->safeEmail(),
+            'profile_id' => $profile->id,
+            'email' => preg_replace('/^.*@/', strtolower("{$profile->first_name}.{$profile->last_name}@"), $this->faker->unique()->safeEmail()),
+            'name' => "{$profile->first_name} {$profile->last_name}",
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
             'email_verified_at' => now(),

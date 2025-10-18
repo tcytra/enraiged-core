@@ -4,7 +4,8 @@ namespace Enraiged;
 
 use Enraiged\Users\Observers\UserObserver;
 use Illuminate\Database\Eloquent\Relations\Relation;
-use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+// use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
 class UserServiceProvider extends ServiceProvider

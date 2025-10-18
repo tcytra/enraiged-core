@@ -1,5 +1,13 @@
 # Release Notes
 
+2025-00-00 : 0.4.0-beta.6 (prerelease)  
+Update: 
+
+- Ported original enraiged-laravel Profiles system into enraiged-core
+- Updated,verified package publishable assets
+
+---
+
 2025-11-12 : 0.4.0-beta.5 (prerelease)  
 Update: Added theme column to the users database table
 
