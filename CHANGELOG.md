@@ -1,11 +1,13 @@
 # Release Notes
 
-2025-00-00 : 0.4.0-beta.6 (prerelease)  
+2025-10-18 : 0.4.0-beta.6 (prerelease)  
 Update: 
 
-- Added context attributes to the User model
-- Added UserFormResource for populating form data
 - Ported original enraiged-laravel Profiles system into enraiged-core
+- Updated the User system
+  - Added context attributes to the User model
+  - Added UserFormResource for populating form data
+  - Added User Policies
 - Updated,verified package publishable assets
 
 ---

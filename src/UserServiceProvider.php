@@ -2,14 +2,20 @@
 
 namespace Enraiged;
 
+use Enraiged\Users\Models\User;
 use Enraiged\Users\Observers\UserObserver;
+use Enraiged\Users\Policies\UserPolicy;
 use Illuminate\Database\Eloquent\Relations\Relation;
-// use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-use Illuminate\Support\ServiceProvider;
+use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Event;
 
 class UserServiceProvider extends ServiceProvider
 {
+    /** @var  array  The policy mappings for the enraiged avatars. */
+    protected $policies = [
+        User::class => UserPolicy::class,
+    ];
+
     /**
      *  Bootstrap the event services.
      *
@@ -17,6 +23,8 @@ class UserServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        $this->registerPolicies();
+
         $model = config('auth.providers.users.model');
 
         $model::observe(UserObserver::class);
