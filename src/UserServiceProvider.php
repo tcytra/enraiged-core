@@ -3,6 +3,7 @@
 namespace Enraiged;
 
 use Enraiged\Users\Models\User;
+use Enraiged\Users\Models\VerifiedUser;
 use Enraiged\Users\Observers\UserObserver;
 use Enraiged\Users\Policies\UserPolicy;
 use Illuminate\Database\Eloquent\Relations\Relation;
@@ -14,6 +15,7 @@ class UserServiceProvider extends ServiceProvider
     /** @var  array  The policy mappings for the enraiged avatars. */
     protected $policies = [
         User::class => UserPolicy::class,
+        VerifiedUser::class => UserPolicy::class,
     ];
 
     /**

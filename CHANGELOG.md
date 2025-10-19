@@ -3,6 +3,7 @@
 2025-10-18 : 0.4.0-beta.6 (prerelease)  
 Update: 
 
+- Improved User Profile handling; Improved validation rules
 - Ported original enraiged-laravel Profiles system into enraiged-core
 - Updated the User system
   - Added context attributes to the User model
