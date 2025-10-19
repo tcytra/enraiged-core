@@ -1,11 +1,12 @@
 # Release Notes
 
 2025-10-18 : 0.4.0-beta.6 (prerelease)  
-Update: 
+Update: Added User Profiles,Avatars,Files systems; Improved User handling
 
 - Improved User Profile handling; Improved validation rules
 - Ported original enraiged-laravel Profiles system into enraiged-core
 - Updated the User system
+  - Added Avatars morph (avatarable) relation to the User Profile
   - Added context attributes to the User model
   - Added UserFormResource for populating form data
   - Added User Policies

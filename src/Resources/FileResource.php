@@ -1,11 +1,14 @@
 <?php
 
-namespace Enraiged\Profiles\Resources;
+namespace Enraiged\Files\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ProfileResource extends JsonResource
+class FileResource extends JsonResource
 {
+    /** @var  string|null  The "data" wrapper that should be applied.*/
+    public static $wrap;
+
     /**
      *  Transform the resource collection into an array.
      *
@@ -15,13 +18,10 @@ class ProfileResource extends JsonResource
     public function toArray($request): array
     {
         return [
-            'id' => $this->id,
-            'alias' => $this->alias,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
+            'mime' => $this->mime,
             'name' => $this->name,
-            'salut' => $this->salut,
-            'title' => $this->title,
+            'size' => $this->size,
+            'type' => $this->type,
         ];
     }
 }

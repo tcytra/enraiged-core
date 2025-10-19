@@ -11,7 +11,9 @@ trait HasOneUser
      */
     public function user(): HasOne
     {
-        return $this->hasOne(auth_model(), 'profile_id', 'id')
+        $model = config('auth.providers.users.model');
+
+        return $this->hasOne($model, 'profile_id', 'id')
             ->withTrashed();
     }
 }

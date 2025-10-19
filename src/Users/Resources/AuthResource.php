@@ -2,6 +2,7 @@
 
 namespace Enraiged\Users\Resources;
 
+use Enraiged\Avatars\Resources\AvatarResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -27,6 +28,7 @@ class AuthResource extends JsonResource
                 || (config('enraiged.auth.allow_secondary_credential') && $this->usernameIsEmailAddress)
                 ? $this->username
                 : null,
+            'avatar' => new AvatarResource($this->profile->avatar),
         ];
     }
 }

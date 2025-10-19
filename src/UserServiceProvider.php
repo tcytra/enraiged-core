@@ -2,6 +2,9 @@
 
 namespace Enraiged;
 
+use Enraiged\Profiles\Models\Profile;
+use Enraiged\Profiles\Observers\ProfileObserver;
+use Enraiged\Profiles\Policies\ProfilePolicy;
 use Enraiged\Users\Models\User;
 use Enraiged\Users\Models\VerifiedUser;
 use Enraiged\Users\Observers\UserObserver;
@@ -14,6 +17,7 @@ class UserServiceProvider extends ServiceProvider
 {
     /** @var  array  The policy mappings for the enraiged avatars. */
     protected $policies = [
+        Profile::class => ProfilePolicy::class,
         User::class => UserPolicy::class,
         VerifiedUser::class => UserPolicy::class,
     ];
@@ -30,6 +34,8 @@ class UserServiceProvider extends ServiceProvider
         $model = config('auth.providers.users.model');
 
         $model::observe(UserObserver::class);
+
+        Profile::observe(ProfileObserver::class);
 
         Event::listen(
             \Illuminate\Auth\Events\Failed::class,
@@ -52,6 +58,7 @@ class UserServiceProvider extends ServiceProvider
         );
 
         Relation::morphMap([
+            'profile' => Profile::class,
             'user' => $model,
         ]);
     }

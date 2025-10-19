@@ -1,6 +1,6 @@
 {
     "name": "tcytra/enraiged-core",
-    "description": "Enraiged Core is the core library required by various Enraiged Laravel projects.",
+    "description": "Enraiged Core provides the authentication systems required by Enraiged Laravel projects.",
     "keywords": ["core", "enraiged"],
     "homepage": "https://github.com/tcytra/enraiged-core",
     "type": "library",
@@ -13,12 +13,23 @@
     ],
     "require": {
         "laravel/framework": "^12.0",
-        "tcytra/enraiged-support": "^0.4.0"
+        "tcytra/enraiged-avatars": "^0.4",
+        "tcytra/enraiged-support": "^0.4"
     },
     "autoload": {
         "psr-4": {
             "Enraiged\\": "src/"
         }
+    },
+    "scripts": {
+        "post-update-cmd": [
+            "rm resources/views/welcome.blade.php",
+            "rm database/factories/UserFactory.php",
+            "rmdir database/factories",
+            "@php artisan vendor:publish --tag=enraiged-core --ansi --force",
+            "@php artisan vendor:publish --tag=enraiged-avatars --ansi --force",
+            "@php artisan vendor:publish --tag=enraiged-files --ansi --force"
+        ]
     },
     "extra": {
         "laravel": {

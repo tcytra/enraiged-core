@@ -2,6 +2,7 @@
 
 namespace Enraiged\Users\Forms\Resources;
 
+use Enraiged\Avatars\Resources\AvatarResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
@@ -28,6 +29,7 @@ class UserFormResource extends JsonResource
             'salut' => $this->profile->salut,
             'theme' => $this->theme,
             'username' => $this->username,
+            'avatar' => (new AvatarResource($this->profile->avatar)),
         ];
     }
 }

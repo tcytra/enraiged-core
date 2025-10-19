@@ -112,5 +112,10 @@ class CoreServiceProvider extends ServiceProvider
             [__DIR__.'/../publish/routes' => base_path('routes')],
             ['enraiged', 'enraiged-core', 'enraiged-core-routes'],
         );
+
+        $this->publishes(
+            [__DIR__.'/../publish/storage' => base_path('storage')],
+            ['enraiged', 'enraiged-core', 'enraiged-core-storage'],
+        );
     }
 }
