@@ -16,6 +16,7 @@ class User extends Authenticatable
         Relations\HasNetworkAddresses,
         Relations\HasPasswordHistory,
         Traits\CanResetPassword,
+        Traits\HasContext,
         Traits\HasSecondaryCredential,
         Traits\MustVerifyEmail,
         Traits\MustVerifySecondary,
