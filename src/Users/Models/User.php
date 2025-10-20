@@ -15,6 +15,8 @@ class User extends Authenticatable
     use Relations\BelongsToProfile,
         Relations\HasNetworkAddresses,
         Relations\HasPasswordHistory,
+        Scopes\Active,
+        Scopes\Deleted,
         Traits\CanResetPassword,
         Traits\HasContext,
         Traits\HasSecondaryCredential,

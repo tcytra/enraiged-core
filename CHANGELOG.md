@@ -1,5 +1,12 @@
 # Release Notes
 
+2025-10-20 : 0.4.0-beta.7 (prerelease)  
+Update: 
+
+- Added Active,Deleted scopes to the Enraiged User model
+
+---
+
 2025-10-18 : 0.4.0-beta.6 (prerelease)  
 Update: Added User Profiles,Avatars,Files systems; Improved User handling
 
