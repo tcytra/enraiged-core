@@ -2,7 +2,7 @@
 
 namespace Enraiged\Passwords\Models;
 
-use Enraiged\Users\Traits\BelongsToUser;
+use Enraiged\Users\Traits\Relations\BelongsToUser;
 use Illuminate\Database\Eloquent\Model;
 
 class PasswordHistory extends Model

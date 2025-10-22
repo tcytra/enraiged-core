@@ -1,6 +1,6 @@
 <?php
 
-namespace Enraiged\Passwords\Rules;
+namespace Enraiged\Passwords\Forms\Validation;
 
 use Closure;
 use Illuminate\Contracts\Validation\DataAwareRule;
