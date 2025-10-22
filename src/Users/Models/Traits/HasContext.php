@@ -59,7 +59,8 @@ trait HasContext
      */
     public function getIsMyselfAttribute(): bool
     {
-        return $this->id === Auth::id();
+        return Auth::check()
+            && $this->id === Auth::id();
     }
 
     /**
