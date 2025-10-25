@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
-use Enraiged\Users\Responses\UserInertiaResponse;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\Request;
 use Inertia\Response as InertiaResponse;
 
-class Edit extends Controller
+class Create extends Controller
 {
     use AuthorizesRequests;
 
@@ -21,12 +20,11 @@ class Edit extends Controller
     {
         $model = config('auth.providers.users.model');
 
-        $user = $request->routeIs('my.*')
-            ? $request->user()
-            : $model::findOrFail($request->user);
+        $this->authorize('create', $model);
 
-        $this->authorize('edit', $user);
+        $props = [
+        ];
 
-        return UserInertiaResponse::render($request, $user, 'users/Edit');
+        return inertia('users/Create', $props);
     }
 }
