@@ -1,9 +1,15 @@
 # Release Notes
 
-2025-10-20 : 0.4.0-beta.7 (prerelease)  
-Update: 
+2025-10-25 : 0.4.0-beta.7 (prerelease)  
+Update: Added table,actions handling to the Enraiged User system
 
 - Added Active,Deleted scopes to the Enraiged User model
+- Added Enraiged Users Tables system
+- Added Files relation to the User model
+- Added User Actions Collection for templating actions
+- Added UserInertiaResponse to provide inertia component handling
+- Resync enraiged-core publishable assets
+- Updated Users UserResource to provide more robust information
 
 ---
 

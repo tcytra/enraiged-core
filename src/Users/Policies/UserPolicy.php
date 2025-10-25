@@ -14,13 +14,23 @@ class UserPolicy
      *  @param  \Enraiged\Users\Models\User  $user
      *  @return bool
      */
+    public function create(User $auth)
+    {
+        return $auth->exists;
+    }
+
+    /**
+     *  @param  \Enraiged\Users\Models\User  $auth
+     *  @param  \Enraiged\Users\Models\User  $user
+     *  @return bool
+     */
     public function delete(User $auth, User $user)
     {
-        if (!is_null($user->deleted_at) || $user->isProtected || ($user->isMyself && !$user->allowSelfDelete)) {
+        if ($user->isDeleted || $user->isProtected || ($user->isMyself && !$user->allowSelfDelete)) {
             return false;
         }
 
-        return $user->isMyself && $user->allowSelfDelete;
+        return $auth->exists; //$user->isMyself && $user->allowSelfDelete;
     }
 
     /**
@@ -30,7 +40,34 @@ class UserPolicy
      */
     public function edit(User $auth, User $user)
     {
-        return $user->isMyself;
+        if (!is_null($user->deleted_at) || $user->isProtected) {
+            return false;
+        }
+
+        return $auth->exists; //$user->isMyself;
+    }
+
+    /**
+     *  @param  \Enraiged\Users\Models\User  $auth
+     *  @return bool
+     */
+    public function export(User $auth)
+    {
+        return $auth->exists;
+    }
+
+    /**
+     *  @param  \Enraiged\Users\Models\User  $auth
+     *  @param  \Enraiged\Users\Models\User  $user
+     *  @return bool
+     */
+    public function impersonate(User $auth, User $user)
+    {
+        return $auth->exists
+            && !$user->isMyself
+            && !$user->isDeleted
+            && !$user->isProtected
+            && !session()->has('impersonate');
     }
 
     /**
@@ -47,9 +84,19 @@ class UserPolicy
      *  @param  \Enraiged\Users\Models\User  $user
      *  @return bool
      */
+    public function restore(User $auth, User $user)
+    {
+        return $auth->exists && $user->isDeleted;
+    }
+
+    /**
+     *  @param  \Enraiged\Users\Models\User  $auth
+     *  @param  \Enraiged\Users\Models\User  $user
+     *  @return bool
+     */
     public function show(User $auth, User $user)
     {
-        return $user->isMyself;
+        return $auth->exists; //$user->isMyself;
     }
 
     /**
@@ -59,6 +106,10 @@ class UserPolicy
      */
     public function update(User $auth, User $user)
     {
-        return $user->isMyself;
+        if (!is_null($user->deleted_at) || $user->isProtected) {
+            return false;
+        }
+
+        return $auth->exists; //$user->isMyself;
     }
 }

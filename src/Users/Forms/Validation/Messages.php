@@ -12,7 +12,7 @@ trait Messages
     public function message(): string
     {
         return $this->attribute
-            ? "The user {$this->attribute} has been updated."
+            ? __('The user :attribute has been updated.', ['attribute' => $this->attribute])
             : 'The user has been updated.';
     }
 }

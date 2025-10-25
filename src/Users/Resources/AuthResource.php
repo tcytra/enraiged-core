@@ -28,6 +28,7 @@ class AuthResource extends JsonResource
                 || (config('enraiged.auth.allow_secondary_credential') && $this->usernameIsEmailAddress)
                 ? $this->username
                 : null,
+            'is_impersonating' => $request->session()->has('impersonate'),
             'avatar' => new AvatarResource($this->profile->avatar),
         ];
     }

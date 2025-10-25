@@ -4,7 +4,7 @@ namespace Enraiged\Users\Models\Traits;
 
 use Illuminate\Support\Facades\Auth;
 
-trait HasContext
+trait ProvidesContext
 {
     /**
      *  @return bool

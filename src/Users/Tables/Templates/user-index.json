@@ -1,0 +1,89 @@
+{
+    "id": "usersIndex",
+    "empty": "There are no users to display",
+    "fetch": "users.data",
+    "prefix": "users.",
+    "table": "users",
+    "actions": {
+        "create": {
+            "class": "p-button-primary",
+            "label": "User",
+            "tooltip": "Create user"
+        },
+        "impersonate": {
+            "class": "p-button-rounded p-button-text text-help",
+            "type": "row",
+            "variant": "text"
+        },
+        "show": {
+            "class": "p-button-rounded p-button-text text-info",
+            "type": "row",
+            "variant": "text"
+        },
+        "edit": {
+            "class": "p-button-rounded p-button-text text-warning",
+            "type": "row",
+            "variant": "text"
+        },
+        "delete": {
+            "class": "p-button-rounded p-button-text text-danger",
+            "type": "row",
+            "variant": "text"
+        }
+    },
+    "columns": {
+        "avatar": {
+            "class": "text-center",
+            "custom": true,
+            "exportable": false,
+            "source": "avatar"
+        },
+        "name": {
+            "label": "Name",
+            "searchable": true,
+            "sortable": true
+        },
+        "email": {
+            "label": "Email",
+            "searchable": true,
+            "sortable": true
+        },
+        "created_at": {
+            "label": "Created",
+            "sortable": true,
+            "source": "users.created_at"
+        },
+        "is_active": {
+            "class": "text-center",
+            "custom": true,
+            "label": "Active",
+            "source": "users.is_active",
+            "sortable": true
+        }
+    },
+    "exportable": {
+        "autodownload": true,
+        "chunk": 100,
+        "default": "XLSX",
+        "name": "User Index :stamp",
+        "options": ["CSV", "XLSX"],
+        "route": "users.export",
+        "stamp": "Y-m-d "
+    },
+    "filters": {
+        "active": {
+            "boolean": true,
+            "label": "Is Active",
+            "labelOff": "Inactive",
+            "source": "users.is_active",
+            "type": "toggle",
+            "value": true
+        }
+    },
+    "pagination": {
+        "options": [5, 10, 15, 25, 50, 100, 200, 500],
+        "page": 1,
+        "rows": 15
+    },
+    "state": true
+}
