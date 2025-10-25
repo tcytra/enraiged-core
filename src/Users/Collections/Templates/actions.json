@@ -1,0 +1,48 @@
+{
+    "create": {
+        "icon": "pi pi-plus",
+        "label": "Create User",
+        "severity": "success",
+        "tooltip": "Create new user"
+    },
+    "impersonate": {
+        "class": "background-warning",
+        "icon": "pi pi-sign-in",
+        "label": "Login",
+        "tooltip": "Impersonate user"
+    },
+    "show": {
+        "icon": "pi pi-user",
+        "label": "Profile",
+        "severity": "info",
+        "tooltip": "Show user"
+    },
+    "edit": {
+        "icon": "pi pi-pencil",
+        "label": "Edit",
+        "severity": "warn",
+        "tooltip": "Edit user"
+    },
+    "delete": {
+        "confirm": "Are you sure you want to delete this user?",
+        "icon": "pi pi-trash",
+        "label": "Delete",
+        "route": {
+            "method": "delete"
+        },
+        "severity": "danger",
+        "tooltip": "Delete user"
+    },
+    "restore": {
+        "class": "background-success",
+        "confirm": "Are you sure you want to restore this user?",
+        "icon": "pi pi-trash",
+        "label": "Restore",
+        "route": {
+            "api": true,
+            "method": "patch",
+            "name": "users.restore",
+            "redirect": "default"
+        }
+    }
+}

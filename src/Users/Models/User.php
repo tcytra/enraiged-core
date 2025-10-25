@@ -3,6 +3,7 @@
 namespace Enraiged\Users\Models;
 
 use Enraiged\Database\Tracking;
+use Enraiged\Users\Contracts\ProvidesActions;
 use Enraiged\Users\Factories\UserFactory;
 use Enraiged\Users\Notifications\WelcomeNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -10,18 +11,21 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements ProvidesActions
 {
     use Relations\BelongsToProfile,
+        Relations\HasManyFiles,
         Relations\HasNetworkAddresses,
         Relations\HasPasswordHistory,
         Scopes\Active,
         Scopes\Deleted,
+        Traits\AllowImpersonation,
         Traits\CanResetPassword,
-        Traits\HasContext,
         Traits\HasSecondaryCredential,
         Traits\MustVerifyEmail,
         Traits\MustVerifySecondary,
+        Traits\ProvidesActions,
+        Traits\ProvidesContext,
         HasFactory, Notifiable, SoftDeletes, Tracking;
 
     /** @var  string  The database table name. */
