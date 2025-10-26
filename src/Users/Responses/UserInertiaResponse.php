@@ -4,7 +4,6 @@ namespace Enraiged\Users\Responses;
 
 use Enraiged\Collections\RequestCollection;
 use Enraiged\Users\Resources\UserResource;
-use Illuminate\Support\Facades\Route;
 use Inertia\Response as InertiaResponse;
 
 class UserInertiaResponse
