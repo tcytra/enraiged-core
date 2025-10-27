@@ -104,6 +104,16 @@ class UserPolicy
      *  @param  \Enraiged\Users\Models\User  $user
      *  @return bool
      */
+    public function store(User $auth)
+    {
+        return $auth->exists; //$user->isMyself;
+    }
+
+    /**
+     *  @param  \Enraiged\Users\Models\User  $auth
+     *  @param  \Enraiged\Users\Models\User  $user
+     *  @return bool
+     */
     public function update(User $auth, User $user)
     {
         if (!is_null($user->deleted_at) || $user->isProtected) {
