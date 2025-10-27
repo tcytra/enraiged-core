@@ -14,7 +14,9 @@
     "require": {
         "laravel/framework": "^12.0",
         "tcytra/enraiged-avatars": "^0.4",
-        "tcytra/enraiged-support": "^0.4"
+        "tcytra/enraiged-forms": "^0.3",
+        "tcytra/enraiged-support": "^0.4",
+        "tcytra/enraiged-tables": "^0.3"
     },
     "autoload": {
         "psr-4": {
