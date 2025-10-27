@@ -3,6 +3,8 @@
 2025-10-27 : 0.4.0-beta.8 (prerelease)  
 Update: Added form handling to the Enraiged User system
 
+- Resync enraiged-core publishable assets
+
 ---
 
 2025-10-25 : 0.4.0-beta.7 (prerelease)  
