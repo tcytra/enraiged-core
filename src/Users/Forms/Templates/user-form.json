@@ -1,0 +1,50 @@
+{
+    "class": "grid horizontal",
+    "heading": "Please provide the following:",
+    "fields": {
+        "salut": {
+            "class": "",
+            "label": "Salutation",
+            "options": {
+                "source": "Enraiged\\Profiles\\Enums\\Salutations",
+                "type": "enum"
+            },
+            "placeholder": "Optional",
+            "type": "select"
+        },
+        "name": {
+            "class": "",
+            "label": "Name",
+            "placeholder": "Required",
+            "required": true
+        },
+        "email": {
+            "class": "",
+            "label": "Email",
+            "placeholder": "Required",
+            "required": true,
+            "type": "email"
+        },
+        "username": {
+            "class": "",
+            "label": "Secondary Email",
+            "placeholder": "Optional",
+            "type": "email"
+        },
+        "password": {
+            "class": "",
+            "feedback": true,
+            "label": "Password",
+            "placeholder": "Required",
+            "type": "password",
+            "unmask": true
+        },
+        "password_confirmation": {
+            "class": "",
+            "disabledUnless": "password",
+            "label": "Confirm Password",
+            "placeholder": "Required",
+            "type": "password"
+        }
+    }
+}

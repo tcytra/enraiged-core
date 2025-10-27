@@ -2,6 +2,7 @@
 
 namespace Enraiged\Users\Forms\Validation;
 
+use Enraiged\Passwords\Forms\Validation\PasswordRules;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -61,29 +62,31 @@ trait Rules
      *  @param  \Enraiged\Users\Models\User  $user
      *  @return array
      */
+    protected function validatePasswordRule($user)
+    {
+        return ['required', 'confirmed', new PasswordRules];
+    }
+
+    /**
+     *  Assemble and return the username validation rule for the request.
+     *
+     *  @param  \Enraiged\Users\Models\User  $user
+     *  @return array
+     */
     protected function validateUsernameRule($user)
     {
-        $rules = [
-            'nullable',
-            'string',
-        ];
+        $rules = ['nullable', 'string'];
 
         if ($user->allowSecondaryCredential) {
             $table = $user->getTable();
 
-            if ($user->allowUsernameLogin) {
-                return [
-                    ...$rules,
-                    'max:255',
-                    Rule::unique($table, 'username')->ignore($user->id),
-                ];
-            }
+            $rule = $user->exists
+                ? Rule::unique($table, 'username')->ignore($user->id)
+                : Rule::unique($table, 'username');
 
-            return [
-                'email',
-                'max:255',
-                Rule::unique($table, 'username')->ignore($user->id),
-            ];
+            return $user->allowUsernameLogin
+                ? [...$rules, 'max:255', $rule]
+                : ['email', 'max:255', $rule];
         }
 
         return $rules;
@@ -98,17 +101,25 @@ trait Rules
     {
         $model = config('auth.providers.users.model');
 
-        $user = $this->routeIs('my.*')
-            ? $this->user()
-            : $model::findOrFail($this->user);
-
         $rules = [];
+
+        if ($this->user) {
+            $user = $this->routeIs('my.*')
+                ? $this->user()
+                : $model::findOrFail($this->user);
+
+        } else {
+            $user = new $model;
+            //$rules['password'] = ['required', 'confirmed', new PasswordRules];
+        }
 
         foreach (collect($this->all()) as $index => $value) {
             if (key_exists($index, $this->rules)) {
                 $rules[$index] = $this->rules[$index];
+
             } else {
                 $method = 'validate'.ucwords(Str::camel($index)).'Rule';
+
                 if (method_exists($this, $method)) {
                     $rules[$index] = $this->{$method}($user);
                 }
