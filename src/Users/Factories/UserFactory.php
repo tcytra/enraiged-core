@@ -2,6 +2,7 @@
 
 namespace Enraiged\Users\Factories;
 
+use App\Enums\Roles;
 use Enraiged\Profiles\Models\Profile;
 use Enraiged\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -28,6 +29,7 @@ class UserFactory extends Factory
 
         return [
             'profile_id' => $profile->id,
+            'role_id' => Roles::Member->role()->id,
             'email' => preg_replace('/^.*@/', strtolower("{$profile->first_name}.{$profile->last_name}@"), $this->faker->unique()->safeEmail()),
             'name' => "{$profile->first_name} {$profile->last_name}",
             'password' => static::$password ??= Hash::make('password'),

@@ -1,8 +1,9 @@
 # Release Notes
 
 2025-10-27 : 0.4.0-beta.8 (prerelease)  
-Update: Added form handling to the Enraiged User system
+Update: Added forms,roles handling to the Enraiged User system
 
+- Added role handling to the Enraiged User system
 - Require enraiged-{forms,tables} from enraiged-core
 - Resync enraiged-core publishable assets
 

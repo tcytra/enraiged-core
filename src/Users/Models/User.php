@@ -15,6 +15,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable implements ProvidesActions, ProvidesForm
 {
     use Relations\BelongsToProfile,
+        Relations\BelongsToRole,
         Relations\HasManyFiles,
         Relations\HasNetworkAddresses,
         Relations\HasPasswordHistory,
@@ -44,6 +45,7 @@ class User extends Authenticatable implements ProvidesActions, ProvidesForm
         'name',
         'password',
         'profile_id',
+        'role_id',
         'theme',
         'username',
     ];

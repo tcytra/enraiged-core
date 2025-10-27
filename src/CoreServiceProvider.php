@@ -38,9 +38,14 @@ class CoreServiceProvider extends ServiceProvider
      */
     protected function bootPublish(): void
     {
+        //$this->publishes(
+        //    [__DIR__.'/../publish/app' => base_path('app')],
+        //    ['enraiged', 'enraiged-core', 'enraiged-core-app'],
+        //);
+
         $this->publishes(
-            [__DIR__.'/../publish/app' => base_path('app')],
-            ['enraiged', 'enraiged-core', 'enraiged-core-app'],
+            [__DIR__.'/../publish/app/Enums' => base_path('app/Enums')],
+            ['enraiged', 'enraiged-core', 'enraiged-core-enums'],
         );
 
         $this->publishes(

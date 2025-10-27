@@ -2,6 +2,7 @@
 
 namespace Enraiged\Users\Resources;
 
+use App\Enums\Roles;
 use Enraiged\Avatars\Resources\AvatarResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -31,6 +32,7 @@ class UserResource extends JsonResource
             'theme' => $this->theme,
             'username' => $this->username,
             'avatar' => (new AvatarResource($this->profile->avatar)),
+            'role' => Roles::find($this->role_id)->role(),
             'created' => $this->created,
             'deleted' => !is_null($this->deleted_at)
                 ? $this->deleted

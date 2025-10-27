@@ -2,6 +2,7 @@
 
 namespace Enraiged\Users\Resources;
 
+use App\Enums\Roles;
 use Enraiged\Avatars\Resources\AvatarResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -30,6 +31,7 @@ class AuthResource extends JsonResource
                 : null,
             'is_impersonating' => $request->session()->has('impersonate'),
             'avatar' => new AvatarResource($this->profile->avatar),
+            'role' => Roles::find($this->role_id)->role(),
         ];
     }
 }

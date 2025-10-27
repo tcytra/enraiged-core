@@ -2,6 +2,7 @@
 
 namespace Enraiged\Users\Policies;
 
+use App\Enums\Roles;
 use Enraiged\Users\Models\User;
 // use Illuminate\Auth\Access\HandlesAuthorization;
 
@@ -16,7 +17,7 @@ class UserPolicy
      */
     public function create(User $auth)
     {
-        return $auth->exists;
+        return $auth->role->is(Roles::Administrator);
     }
 
     /**
@@ -30,7 +31,8 @@ class UserPolicy
             return false;
         }
 
-        return $auth->exists; //$user->isMyself && $user->allowSelfDelete;
+        return $auth->role->is(Roles::Administrator)
+            || ($user->isMyself && $user->allowSelfDelete);
     }
 
     /**
@@ -44,7 +46,7 @@ class UserPolicy
             return false;
         }
 
-        return $auth->exists; //$user->isMyself;
+        return $auth->role->is(Roles::Administrator) || $user->isMyself;
     }
 
     /**
@@ -53,7 +55,7 @@ class UserPolicy
      */
     public function export(User $auth)
     {
-        return $auth->exists;
+        return $auth->role->is(Roles::Administrator);
     }
 
     /**
@@ -63,7 +65,7 @@ class UserPolicy
      */
     public function impersonate(User $auth, User $user)
     {
-        return $auth->exists
+        return $auth->role->is(Roles::Administrator)
             && !$user->isMyself
             && !$user->isDeleted
             && !$user->isProtected
@@ -76,7 +78,7 @@ class UserPolicy
      */
     public function index(User $auth)
     {
-        return $auth->exists;
+        return $auth->role->is(Roles::Administrator);
     }
 
     /**
@@ -86,7 +88,7 @@ class UserPolicy
      */
     public function restore(User $auth, User $user)
     {
-        return $auth->exists && $user->isDeleted;
+        return $auth->role->is(Roles::Administrator) && $user->isDeleted;
     }
 
     /**
@@ -96,7 +98,7 @@ class UserPolicy
      */
     public function show(User $auth, User $user)
     {
-        return $auth->exists; //$user->isMyself;
+        return $auth->role->is(Roles::Administrator) || $user->isMyself;
     }
 
     /**
@@ -106,7 +108,7 @@ class UserPolicy
      */
     public function store(User $auth)
     {
-        return $auth->exists; //$user->isMyself;
+        return $auth->role->is(Roles::Administrator);
     }
 
     /**
@@ -120,6 +122,6 @@ class UserPolicy
             return false;
         }
 
-        return $auth->exists; //$user->isMyself;
+        return $auth->role->is(Roles::Administrator) || $user->isMyself;
     }
 }

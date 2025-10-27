@@ -2,6 +2,16 @@
     "class": "grid horizontal",
     "heading": "Please provide the following:",
     "fields": {
+        "role_id": {
+            "class": "",
+            "label": "Role",
+            "options": {
+                "source": "App\\Enums\\Roles",
+                "type": "enum"
+            },
+            "placeholder": "Required",
+            "type": "select"
+        },
         "salut": {
             "class": "",
             "label": "Salutation",
