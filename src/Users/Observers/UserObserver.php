@@ -8,6 +8,27 @@ use Enraiged\Users\Notifications\LoginChangeNotification;
 class UserObserver
 {
     /**
+     *  Handle the User creating event.
+     *
+     *  @param  \Enraiged\Users\Models\User  $user
+     *  @return void
+     */
+    public function creating(User $user)
+    {
+        if (is_null($user->locale)) {
+            $user->locale = config('app.locale');
+        }
+
+        if (is_null($user->theme)) {
+            $user->theme = json_encode(config('enraiged.theme'));
+        }
+
+        if (is_null($user->timezone)) {
+            $user->timezone = config('enraiged.app.timezone');
+        }
+    }
+
+    /**
      *  Handle the User saving event.
      *
      *  @param  \Enraiged\Users\Models\User  $user
@@ -15,10 +36,6 @@ class UserObserver
      */
     public function saving(User $user)
     {
-        if (is_null($user->locale)) {
-            $user->locale = config('app.locale');
-        }
-
         if ($user->isDirty('email')) {
             $user->email = strtolower($user->email);
             $user->email_verified_at = null;
@@ -31,10 +48,6 @@ class UserObserver
         if ($user->isDirty('username') && $user->usernameIsEmailAddress) {
             $user->username = strtolower($user->username);
             $user->secondary_verified_at = null;
-        }
-
-        if (is_null($user->theme)) {
-            $user->theme = json_encode(config('enraiged.theme'));
         }
     }
 
