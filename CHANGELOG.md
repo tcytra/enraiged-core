@@ -3,7 +3,9 @@
 2025-10-28 : 0.4.0-beta.9 (prerelease)  
 Update: Round of corrections, updates; Testing in hosting environment
 
-- Corrections,improvements to the user validation rules
+- Correct issue identifying user myself in the validation rules
+- Resync enraiged-core publishable assets
+- Temporarily remove user delete from UserInertiaResponse $actions
 
 ---
 
