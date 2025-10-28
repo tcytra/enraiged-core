@@ -1,5 +1,12 @@
 # Release Notes
 
+2025-10-28 : 0.4.0-beta.9 (prerelease)  
+Update: Round of corrections, updates; Testing in hosting environment
+
+- Corrections,improvements to the user validation rules
+
+---
+
 2025-10-27 : 0.4.0-beta.8 (prerelease)  
 Update: Added forms,roles handling to the Enraiged User system
 

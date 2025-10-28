@@ -2,6 +2,7 @@
 
 namespace Enraiged\Users\Forms\Validation;
 
+use App\Enums\Roles;
 use Enraiged\Passwords\Forms\Validation\PasswordRules;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
@@ -62,17 +63,6 @@ trait Rules
      *  @param  \Enraiged\Users\Models\User  $user
      *  @return array
      */
-    protected function validatePasswordRule($user)
-    {
-        return ['required', 'confirmed', new PasswordRules];
-    }
-
-    /**
-     *  Assemble and return the username validation rule for the request.
-     *
-     *  @param  \Enraiged\Users\Models\User  $user
-     *  @return array
-     */
     protected function validateUsernameRule($user)
     {
         $rules = ['nullable', 'string'];
@@ -110,6 +100,11 @@ trait Rules
             $user = $this->user
                 ? $model::findOrFail($this->user)
                 : new $model;
+
+            $rules = [
+                'password' => ['required', 'confirmed', new PasswordRules],
+                'role_id' => ['required', 'in:'.collect(Roles::ids())->join(',')],
+            ];
         }
 
         foreach (collect($this->all()) as $index => $value) {
