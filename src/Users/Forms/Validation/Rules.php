@@ -103,14 +103,13 @@ trait Rules
 
         $rules = [];
 
-        if ($this->user) {
-            $user = $this->routeIs('my.*')
-                ? $this->user()
-                : $model::findOrFail($this->user);
+        if ($this->routeIs('my.*')) {
+            $user = $this->user();
 
         } else {
-            $user = new $model;
-            //$rules['password'] = ['required', 'confirmed', new PasswordRules];
+            $user = $this->user
+                ? $model::findOrFail($this->user)
+                : new $model;
         }
 
         foreach (collect($this->all()) as $index => $value) {
