@@ -13,7 +13,7 @@ class UserInertiaResponse
         'impersonate' => 'p-button-text text-help',
         'show' => 'p-button-text text-info',
         'edit' => 'p-button-text text-warning',
-        'delete' => 'p-button-text text-danger',
+        //'delete' => 'p-button-text text-danger',
     ];
 
     /**
