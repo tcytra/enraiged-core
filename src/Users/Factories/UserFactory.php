@@ -29,7 +29,7 @@ class UserFactory extends Factory
 
         return [
             'profile_id' => $profile->id,
-            'role_id' => Roles::Member->role()->id,
+            'role_id' => Roles::lowest()->role()->id,
             'email' => preg_replace('/^.*@/', strtolower("{$profile->first_name}.{$profile->last_name}@"), $this->faker->unique()->safeEmail()),
             'name' => "{$profile->first_name} {$profile->last_name}",
             'password' => static::$password ??= Hash::make('password'),
