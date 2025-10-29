@@ -41,6 +41,7 @@ class User extends Authenticatable implements ProvidesActions, ProvidesForm
      */
     protected $fillable = [
         'email',
+        'is_active',
         'is_hidden',
         'is_protected',
         'locale',
