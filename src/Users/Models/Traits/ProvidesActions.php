@@ -2,6 +2,7 @@
 
 namespace Enraiged\Users\Models\Traits;
 
+use Enraiged\Collections\ActionsCollection;
 use Enraiged\Users\Collections\UserActionsCollection;
 
 trait ProvidesActions
@@ -15,7 +16,7 @@ trait ProvidesActions
      *  @param  array|string   $items
      *  @return \Enraiged\Users\Collections\UserActionsCollection
      */
-    public function actions(array|string $items): UserActionsCollection
+    public function actions(array|string $items): ActionsCollection
     {
         if (!is_array($items)) {
             $items = [$items];

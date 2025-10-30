@@ -2,9 +2,9 @@
 
 namespace Enraiged\Users\Models;
 
+use Enraiged\Contracts\ProvidesActions;
 use Enraiged\Database\Tracking;
 use Enraiged\Forms\Contracts\ProvidesForm;
-use Enraiged\Users\Contracts\ProvidesActions;
 use Enraiged\Users\Factories\UserFactory;
 use Enraiged\Users\Notifications\WelcomeNotification;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
