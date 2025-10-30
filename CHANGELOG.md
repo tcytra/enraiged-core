@@ -1,15 +1,10 @@
-# Release Notes
+# Enraiged Core Release Notes
 
-2025-10-28 : 0.4.0-beta.10 (prerelease)  
-Update: 
-
-- Correct handling of the lowest role when seeding factory users
-
----
-
-2025-10-28 : 0.4.0-beta.9 (prerelease)  
+2025-10-30 : 0.4.0-beta.9 (prerelease)  
 Update: Round of corrections, updates; Testing in hosting environment
 
+- Correct handling of the lowest role when seeding factory users
+- Correct how model builder is called in the user index query()
 - Correct issue identifying user myself in the validation rules
 - Resync enraiged-core publishable assets
 - Temporarily remove user delete from UserInertiaResponse $actions
