@@ -8,6 +8,7 @@ Update: Round of corrections, updates; Testing in hosting environment
 - Correct issue identifying user myself in the validation rules
 - Resync enraiged-core publishable assets
 - Temporarily remove user delete from UserInertiaResponse $actions
+- Use correct ProvidesActions contract in core user tables
 
 ---
 
