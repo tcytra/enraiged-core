@@ -68,7 +68,7 @@ class UserIndex extends TableBuilder implements ProvidesDefaultSort, ProvidesTab
      */
     public function query(): Builder
     {
-        $builder = User::withTrashed()
+        $builder = $this->model::withTrashed()
             ->select('users.*')
             ->join('profiles', 'profiles.id', '=', 'users.profile_id')
             ->where('users.is_hidden', false);
