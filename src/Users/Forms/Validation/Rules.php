@@ -102,8 +102,8 @@ trait Rules
                 : new $model;
 
             $rules = [
-                'password' => ['required', 'confirmed', new PasswordRules],
-                'role_id' => ['required', 'in:'.collect(Roles::ids())->join(',')],
+                'password' => ['required', 'sometimes', 'confirmed', new PasswordRules],
+                'role_id' => ['required', 'sometimes', 'in:'.collect(Roles::ids())->join(',')],
             ];
         }
 
