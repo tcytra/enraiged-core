@@ -10,6 +10,7 @@
                 "type": "enum"
             },
             "placeholder": "Required",
+            "required": true,
             "type": "select"
         },
         "salut": {
