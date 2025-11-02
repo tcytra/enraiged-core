@@ -11,8 +11,10 @@ trait BelongsToRole
      *
      *  @return \Enraiged\Users\Enums\Roles
      */
-    public function getRoleAttribute(): Roles
+    public function getRoleAttribute()
     {
-        return Roles::find($this->role_id);
+        $roles = config('auth.providers.roles.enum', Roles::class);
+
+        return $roles::find($this->role_id);
     }
 }

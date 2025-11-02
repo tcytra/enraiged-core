@@ -90,6 +90,7 @@ trait Rules
     public function rules(): array
     {
         $model = config('auth.providers.users.model');
+        $roles = config('auth.providers.roles.enum', Roles::class);
 
         $rules = [];
 
@@ -103,7 +104,7 @@ trait Rules
 
             $rules = [
                 'password' => ['required', 'sometimes', 'confirmed', new PasswordRules],
-                'role_id' => ['required', 'sometimes', 'in:'.collect(Roles::ids())->join(',')],
+                'role_id' => ['required', 'sometimes', 'in:'.collect($roles::ids())->join(',')],
             ];
         }
 

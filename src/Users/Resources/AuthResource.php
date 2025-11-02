@@ -17,6 +17,8 @@ class AuthResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $roles = config('auth.providers.roles.enum', Roles::class);
+
         return [
             'id' => $this->id,
             'email' => $this->email,
@@ -28,7 +30,7 @@ class AuthResource extends JsonResource
                 : null,
             'is_impersonating' => $request->session()->has('impersonate'),
             'avatar' => new AvatarResource($this->profile->avatar),
-            'role' => Roles::find($this->role_id)->role(),
+            'role' => $roles::find($this->role_id)->role(),
         ];
     }
 }

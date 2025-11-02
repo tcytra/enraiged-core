@@ -27,9 +27,11 @@ class UserFactory extends Factory
         $profile = Profile::factory()
             ->create();
 
+        $roles = config('auth.providers.roles.enum', Roles::class);
+
         return [
             'profile_id' => $profile->id,
-            'role_id' => Roles::lowest()->role()->id,
+            'role_id' => $roles::lowest()->role()->id,
             'email' => preg_replace('/^.*@/', strtolower("{$profile->first_name}.{$profile->last_name}@"), $this->faker->unique()->safeEmail()),
             'name' => "{$profile->first_name} {$profile->last_name}",
             'password' => static::$password ??= Hash::make('password'),

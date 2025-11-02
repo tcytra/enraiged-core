@@ -64,6 +64,11 @@ class CoreServiceProvider extends ServiceProvider
         );
 
         $this->publishes(
+            [__DIR__.'/../publish/app/Http/Resources' => base_path('app/Http/Resources')],
+            ['enraiged', 'enraiged-core', 'enraiged-core-resources'],
+        );
+
+        $this->publishes(
             [__DIR__.'/../publish/bootstrap' => base_path('bootstrap')],
             ['enraiged', 'enraiged-core', 'enraiged-core-bootstrap'],
         );

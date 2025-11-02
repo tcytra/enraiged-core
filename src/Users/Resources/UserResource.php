@@ -17,6 +17,8 @@ class UserResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
+        $roles = config('auth.providers.roles.enum', Roles::class);
+
         $resource = [
             'id' => $this->id,
             'active' => $this->isActive,
@@ -29,7 +31,7 @@ class UserResource extends JsonResource
             'theme' => $this->theme,
             'username' => $this->username,
             'avatar' => (new AvatarResource($this->profile->avatar)),
-            'role' => Roles::find($this->role_id)->role(),
+            'role' => $roles::find($this->role_id)->role(),
             'status' => $this->status(),
             'created' => $this->created,
             'deleted' => !is_null($this->deleted_at)

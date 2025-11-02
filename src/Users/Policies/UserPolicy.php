@@ -4,12 +4,9 @@ namespace Enraiged\Users\Policies;
 
 use Enraiged\Users\Enums\Roles;
 use Enraiged\Users\Models\User;
-// use Illuminate\Auth\Access\HandlesAuthorization;
 
 class UserPolicy
 {
-    // use HandlesAuthorization;
-
     /**
      *  @param  \Enraiged\Users\Models\User  $auth
      *  @param  \Enraiged\Users\Models\User  $user
