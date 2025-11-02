@@ -6,7 +6,7 @@
             "class": "",
             "label": "Role",
             "options": {
-                "source": "App\\Enums\\Roles",
+                "source": "Enraiged\\Users\\Enums\\Roles",
                 "type": "enum"
             },
             "placeholder": "Required",

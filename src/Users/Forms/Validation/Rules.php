@@ -2,8 +2,8 @@
 
 namespace Enraiged\Users\Forms\Validation;
 
-use App\Enums\Roles;
 use Enraiged\Passwords\Forms\Validation\PasswordRules;
+use Enraiged\Users\Enums\Roles;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 

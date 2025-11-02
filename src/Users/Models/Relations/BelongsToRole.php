@@ -2,14 +2,14 @@
 
 namespace Enraiged\Users\Models\Relations;
 
-use App\Enums\Roles;
+use Enraiged\Users\Enums\Roles;
 
 trait BelongsToRole
 {
     /**
      *  Return the user role.
      *
-     *  @return \App\Enums\Roles
+     *  @return \Enraiged\Users\Enums\Roles
      */
     public function getRoleAttribute(): Roles
     {

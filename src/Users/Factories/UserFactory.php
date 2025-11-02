@@ -2,8 +2,8 @@
 
 namespace Enraiged\Users\Factories;
 
-use App\Enums\Roles;
 use Enraiged\Profiles\Models\Profile;
+use Enraiged\Users\Enums\Roles;
 use Enraiged\Users\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
