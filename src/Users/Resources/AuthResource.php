@@ -2,16 +2,13 @@
 
 namespace Enraiged\Users\Resources;
 
-use App\Enums\Roles;
+use App\Http\Resources\JsonResource;
 use Enraiged\Avatars\Resources\AvatarResource;
+use Enraiged\Users\Enums\Roles;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 
 class AuthResource extends JsonResource
 {
-    /** @var  string  The "data" wrapper that should be applied. */
-    public static $wrap = null;
-
     /**
      *  Transform the resource into an array.
      *

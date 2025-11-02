@@ -2,16 +2,13 @@
 
 namespace Enraiged\Users\Resources;
 
-use App\Enums\Roles;
+use App\Http\Resources\JsonResource;
 use Enraiged\Avatars\Resources\AvatarResource;
+use Enraiged\Users\Enums\Roles;
 use Illuminate\Http\Request;
-use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
 {
-    /** @var  string|null  The "data" wrapper that should be applied.*/
-    public static $wrap;
-
     /**
      *  Transform the resource into an array.
      *
@@ -33,6 +30,7 @@ class UserResource extends JsonResource
             'username' => $this->username,
             'avatar' => (new AvatarResource($this->profile->avatar)),
             'role' => Roles::find($this->role_id)->role(),
+            'status' => $this->status(),
             'created' => $this->created,
             'deleted' => !is_null($this->deleted_at)
                 ? $this->deleted
@@ -47,5 +45,23 @@ class UserResource extends JsonResource
         }
 
         return $resource;
+    }
+
+    /**
+     *  Determine the dynamic status of the user.
+     *
+     *  @return string
+     */
+    protected function status(): string
+    {
+        if ($this->isDeleted) {
+            return 'deleted';
+        }
+
+        if (!$this->isActive) {
+            return 'inactive';
+        }
+
+        return 'active';
     }
 }

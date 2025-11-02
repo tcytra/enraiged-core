@@ -27,6 +27,8 @@ class IndexResource extends UserResource
             'last_name' => $this->profile->last_name,
             'name' => $this->name,
             'username' => $this->username,
+            'role' => $this->role ? $this->role->name : null,
+            'status' => $this->status(),
         ];
 
         if ($this->resource->actions) {
