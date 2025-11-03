@@ -35,7 +35,8 @@ trait ProvidesContext
      */
     public function getIsActiveAttribute(): bool
     {
-        return $this->attributes['is_active'] === 1;
+        return $this->exists
+            && $this->attributes['is_active'] === 1;
     }
 
     /**
@@ -51,7 +52,8 @@ trait ProvidesContext
      */
     public function getIsHiddenAttribute(): bool
     {
-        return $this->attributes['is_hidden'] === 1;
+        return $this->exists
+            && $this->attributes['is_hidden'] === 1;
     }
 
     /**
@@ -76,6 +78,7 @@ trait ProvidesContext
      */
     public function getIsProtectedAttribute(): bool
     {
-        return $this->attributes['is_protected'] === 1;
+        return $this->exists
+            && $this->attributes['is_protected'] === 1;
     }
 }
