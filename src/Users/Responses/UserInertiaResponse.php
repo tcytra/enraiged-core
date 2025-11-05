@@ -22,9 +22,10 @@ class UserInertiaResponse
      *  @param  \Illuminate\Http\Request  $request
      *  @param  \Enraiged\Users\Models\User  $user
      *  @param  string  $component
+     *  @param  array   $props = []
      *  @return \Inertia\Response
      */
-    public static function Render($request, $user, $component): InertiaResponse
+    public static function Render($request, $user, $component, $props = []): InertiaResponse
     {
         $request = RequestCollection::from($request);
 
@@ -42,6 +43,7 @@ class UserInertiaResponse
             'mustVerifyEmail' => $user->mustVerifyEmail,
             'mustVerifySecondary' => $user->mustVerifySecondary,
             'user' => new UserResource($user),
+            ...$props,
         ];
 
         return inertia($component, $props);
