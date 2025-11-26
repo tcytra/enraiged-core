@@ -1,9 +1,10 @@
 # Enraiged Core Release Notes
 
-2025-11-05 : 0.4.0-beta.9 (prerelease)  
+2025-11-26 : 0.4.0-beta.9 (prerelease)  
 Update: Round of corrections, updates; Testing in hosting environment
 
 - Added auth.providers.roles. config namespace for defining Roles
+- Added users.timezone to the validation rules,model fillable
 - Correct handling of the lowest role when seeding factory users
 - Correct how model builder is called in the user index query()
 - Correct issue identifying user myself in the validation rules

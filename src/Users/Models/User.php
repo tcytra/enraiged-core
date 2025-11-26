@@ -50,6 +50,7 @@ class User extends Authenticatable implements ProvidesActions, ProvidesForm
         'profile_id',
         'role_id',
         'theme',
+        'timezone',
         'username',
     ];
 

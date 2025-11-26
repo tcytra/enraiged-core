@@ -14,6 +14,7 @@ trait Rules
         'name' => 'required|string|max:255',
         'salut' => 'nullable|string',
         'theme' => 'array',
+        'timezone' => 'nullable|string|max:100',
     ];
 
     /**
