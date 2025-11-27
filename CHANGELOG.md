@@ -1,6 +1,6 @@
 # Enraiged Core Release Notes
 
-2025-11-26 : 0.4.0-beta.9 (prerelease)  
+2025-11-27 : 0.4.0-beta.9 (prerelease)  
 Update: Round of corrections, updates; Testing in hosting environment
 
 - Added auth.providers.roles. config namespace for defining Roles

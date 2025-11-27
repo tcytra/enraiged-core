@@ -8,11 +8,11 @@ trait ProvidesContext
 {
     /**
      *  @return bool
-     */
+     *
     public function getAllowSecondaryCredentialAttribute(): bool
     {
         return config('enraiged.auth.allow_secondary_credential') === true;
-    }
+    }*/
 
     /**
      *  @return bool
@@ -24,11 +24,11 @@ trait ProvidesContext
 
     /**
      *  @return bool
-     */
+     *
     public function getAllowUsernameLoginAttribute(): bool
     {
         return config('enraiged.auth.allow_username_login') === true;
-    }
+    }*/
 
     /**
      *  @return bool

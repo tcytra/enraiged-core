@@ -17,7 +17,7 @@ class UserInertiaResponse
     ];
 
     /**
-     *  Return am Inertia Response with the full user context.
+     *  Return an Inertia Response with the full user context.
      *
      *  @param  \Illuminate\Http\Request  $request
      *  @param  \Enraiged\Users\Models\User  $user
@@ -35,9 +35,7 @@ class UserInertiaResponse
 
         $props = [
             'actions' => $actions,
-            'allowSecondaryCredential' => $user->allowSecondaryCredential,
             'allowSelfDelete' => $user->allowSelfDelete,
-            'allowUsernameLogin' => $user->allowUsernameLogin,
             'isMyProfile' => $user->isMyself,
             'isProtectedUser' => $user->isProtected,
             'mustVerifyEmail' => $user->mustVerifyEmail,
