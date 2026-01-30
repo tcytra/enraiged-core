@@ -33,6 +33,7 @@ class IpAddress extends Model
         'ip_address',
         'is_verified',
         'user_id',
+        'verified_at',
     ];
 
     /**
