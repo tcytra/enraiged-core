@@ -22,7 +22,7 @@ class ProfileFactory extends Factory
     {
         $salut = Salutations::random();
 
-        $gender = Salutations::SalutationIsFeminine($salut)
+        $gender = Salutations::isFeminine($salut)
             ? Genders::Female
             : Genders::Male;
 

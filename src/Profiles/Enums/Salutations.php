@@ -14,14 +14,14 @@ enum Salutations: string
     case Mr = 'Mr';
     case Mrs = 'Mrs';
     case Ms = 'Ms';
-    case Professor = 'Professor';
+    case Prof = 'Professor';
 
     /**
      *  Return the available feminine salutations.
      *
      *  @return array
      */
-    public static function FeminineSalutations(): array
+    public static function feminine(): array
     {
         return collect(Salutations::cases())
             ->filter(fn ($enum)
@@ -31,7 +31,7 @@ enum Salutations: string
                     Salutations::Miss->name,
                     Salutations::Mrs->name,
                     Salutations::Ms->name,
-                    Salutations::Professor->name,
+                    Salutations::Prof->name,
                 ]))
             ->toArray();
     }
@@ -41,7 +41,7 @@ enum Salutations: string
      *
      *  @return array
      */
-    public static function MasculineSalutations(): array
+    public static function masculine(): array
     {
         return collect(Salutations::cases())
             ->filter(fn ($enum)
@@ -49,7 +49,7 @@ enum Salutations: string
                     Salutations::Dr->name,
                     Salutations::Hon->name,
                     Salutations::Mr->name,
-                    Salutations::Professor->name,
+                    Salutations::Prof->name,
                 ]))
             ->toArray();
     }
@@ -60,9 +60,9 @@ enum Salutations: string
      *  @param  \Enraiged\Profiles\Enums\Salutations $salutation
      *  @return bool
      */
-    public static function SalutationIsFeminine(Salutations $salutation): bool
+    public static function isFeminine(Salutations $salutation): bool
     {
-        $salutations = collect(Salutations::FeminineSalutations())
+        $salutations = collect(Salutations::Feminine())
             ->transform(fn ($salutation) => $salutation->name)
             ->toArray();
 
@@ -75,9 +75,9 @@ enum Salutations: string
      *  @param  \Enraiged\Profiles\Enums\Salutations $salutation
      *  @return bool
      */
-    public static function SalutationIsMasculine(Salutations $salutation): bool
+    public static function isMasculine(Salutations $salutation): bool
     {
-        $salutations = collect(Salutations::MasculineSalutations())
+        $salutations = collect(Salutations::Masculine())
             ->transform(fn ($salutation) => $salutation->name)
             ->toArray();
 

@@ -3,7 +3,8 @@
 2026-02-03 : 0.4.0-beta.10 (prerelease)  
 Update: 
 
-- Corrections,improvements to the Roles enum
+- Corrections,improvements to the User Roles enum
+- Corrections,improvements to the Profile Salutations enum
 
 ---
 
