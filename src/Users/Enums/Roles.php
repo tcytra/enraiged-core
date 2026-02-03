@@ -3,92 +3,14 @@
 namespace Enraiged\Users\Enums;
 
 use Enraiged\Enums\Traits\StaticMethods;
+use Enraiged\Users\Enums\Traits\RoleMethods;
 
 enum Roles: string
 {
-    use StaticMethods;
+    use RoleMethods, StaticMethods;
 
-    case Administrator = 'Administrator';
-    case Member = 'Member';
-
-    /**
-     *  Determine if this role is greater than or equal to a provided role.
-     *
-     *  @param  \Enraiged\Users\Enums\Roles  $role
-     *  @return bool
-     */
-    public function atLeast($role): bool
-    {
-        return $this->role()->rank === $role->role()->rank;
-    }
-
-    /**
-     *  Find and return a role by id, if possible.
-     *
-     *  @param  int     $search
-     *  @return self
-     */
-    public static function find($search): self
-    {
-        foreach (Roles::cases() as $each) {
-            $role = $each->role();
-
-            if ((preg_match('/^\d+$/', $search) && $role->id == $search)
-                || (gettype($search) === 'string' && $role->name == $search)) {
-                return $each;
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     *  Return an array of role ids.
-     *
-     *  @return array
-     */
-    public static function ids(): array
-    {
-        return collect(self::options())
-            ->transform(fn ($option) => $option->id)
-            ->values()
-            ->toArray();
-    }
-
-    /**
-     *  Determine if this role matches a provided role.
-     *
-     *  @param  \Enraiged\Users\Enums  $role
-     *  @return bool
-     */
-    public function is($role): bool
-    {
-        return $this === $role;
-    }
-
-    /**
-     *  Determine if this role does not match a provided role.
-     *
-     *  @param  \Enraiged\Users\Enums  $role
-     *  @return bool
-     */
-    public function isNot($role): bool
-    {
-        return $this !== $role;
-    }
-
-    /**
-     *  Return the lowest ranked role.
-     *
-     *  @return self
-     */
-    public static function lowest()
-    {
-        $role = collect(self::options())
-            ->last();
-
-        return self::{$role->name};
-    }
+    case Administrator = 'Application Administrator';
+    case Member = 'Member Account';
 
     /**
      *  Return a selectable array of enumerated options.
@@ -99,28 +21,22 @@ enum Roles: string
     {
         return collect(self::cases())
             ->transform(fn ($option)
-                => $option->role())
+                => collect($option->role())
+                    ->only(['id', 'name'])
+                    ->toArray())
             ->toArray();
     }
 
     /**
-     *  Return the attributes of a role.
+     *  Return the expanded attributes of a role.
      *
      *  @return object
      */
     public function role(): object
     {
         return (object) match($this) {
-            Roles::Administrator => [
-                'id' => 1,
-                'rank' => 1,
-                'name' => Roles::Administrator->value,
-            ],
-            Roles::Member => [
-                'id' => 2,
-                'rank' => 2,
-                'name' => Roles::Member->value,
-            ],
+            Roles::Administrator => $this->attributes(Roles::Administrator, 1),
+            Roles::Member => $this->attributes(Roles::Member, 2),
         };
     }
 }

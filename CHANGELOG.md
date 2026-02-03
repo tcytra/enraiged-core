@@ -1,5 +1,12 @@
 # Enraiged Core Release Notes
 
+2026-02-03 : 0.4.0-beta.10 (prerelease)  
+Update: 
+
+- Corrections,improvements to the Roles enum
+
+---
+
 2026-01-30 : 0.4.0-beta.9 (prerelease)  
 Update: Round of corrections, updates; Testing in hosting environment
 
