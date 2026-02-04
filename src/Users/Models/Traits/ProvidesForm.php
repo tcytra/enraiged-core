@@ -16,7 +16,10 @@ trait ProvidesForm
      */
     public function form(Request $request): FormBuilder
     {
-        $form = new UserForm($request, $this);
+        $form = (new UserForm($request, $this))
+            ->fieldIf('email', ['label' => 'Primary Email'], $this->allowSecondaryCredential)
+            ->fieldIf('username', ['label' => 'Secondary Email or Username', 'type' => 'text'], $this->allowUsernameLogin)
+            ->removeIf('username', !$this->allowSecondaryCredential);
 
         return $this->exists
             ? $form->edit('users.update', ['user' => $this->id])
