@@ -94,7 +94,7 @@ trait RoleMethods
      */
     public static function lowest()
     {
-        $role = collect(self::options())
+        $role = (object) collect(self::options())
             ->last();
 
         return self::{$role->name};
