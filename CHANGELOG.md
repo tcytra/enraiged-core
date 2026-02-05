@@ -4,6 +4,7 @@
 Update: 
 
 - Added Enraiged\Geo system for handling countries,regions,timeszones
+- Corrected issue preventing protected administrator editing 
 - Corrections,improvements to the User Roles enum
 - Corrections,improvements to the Profile Salutations enum
 - Improvements to the user context attributes

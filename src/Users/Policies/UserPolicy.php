@@ -39,6 +39,10 @@ class UserPolicy
      */
     public function edit(User $auth, User $user)
     {
+        if ($auth->role->is(Roles::Administrator) && $user->isMyself) {
+            return true;
+        }
+
         if (!is_null($user->deleted_at) || $user->isProtected) {
             return false;
         }
