@@ -3,8 +3,10 @@
 2026-02-03 : 0.4.0-beta.10 (prerelease)  
 Update: 
 
+- Added Enraiged\Geo system for handling countries,regions,timeszones
 - Corrections,improvements to the User Roles enum
 - Corrections,improvements to the Profile Salutations enum
+- Refactored Enraiged\NetworkAddresses namespace to Enraiged\Network
 
 ---
 
