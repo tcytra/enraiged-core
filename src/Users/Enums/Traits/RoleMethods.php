@@ -60,7 +60,7 @@ trait RoleMethods
     public static function ids(): array
     {
         return collect(self::options())
-            ->transform(fn ($option) => $option->id)
+            ->transform(fn ($option) => $option['id'])
             ->values()
             ->toArray();
     }
@@ -94,8 +94,7 @@ trait RoleMethods
      */
     public static function lowest()
     {
-        $role = (object) collect(self::options())
-            ->last();
+        $role = (object) collect(self::options())->last();
 
         return self::{$role->name};
     }
