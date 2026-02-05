@@ -1,61 +1,140 @@
 {
-    "class": "grid horizontal",
+    "class": "gap-5 grid grid-cols-12 horizontal",
     "heading": "Please provide the following:",
     "fields": {
-        "role_id": {
-            "class": "",
-            "label": "Role",
-            "options": {
-                "source": "Enraiged\\Users\\Enums\\Roles",
-                "type": "enum"
+        "administration_section": {
+            "class": "gap-5 grid grid-cols-12",
+            "heading": "Administrative Options",
+            "precontent": {
+                "body": "Configure this user's administrative system options.",
+                "class": "text-neutral text-sm"
             },
-            "placeholder": "Required",
-            "required": true,
-            "type": "select"
-        },
-        "salut": {
-            "class": "",
-            "label": "Salutation",
-            "options": {
-                "source": "Enraiged\\Profiles\\Enums\\Salutations",
-                "type": "enum"
+            "secure": {
+                "method": "roleIs",
+                "role": "Administrator"
             },
-            "placeholder": "Optional",
-            "type": "select"
+            "type": "section",
+            "fields": {
+                "role_id": {
+                    "class": "col-span-12 md:col-span-6",
+                    "label": "Role",
+                    "options": {
+                        "source": "Enraiged\\Users\\Enums\\Roles",
+                        "type": "enum"
+                    },
+                    "placeholder": "Required",
+                    "required": true,
+                    "type": "select"
+                },
+                "is_active": {
+                    "class": "col-span-4 md:col-span-2",
+                    "label": "Active",
+                    "type": "switch",
+                    "value": true
+
+                },
+                "is_hidden": {
+                    "class": "col-span-4 md:col-span-2",
+                    "label": "Hidden",
+                    "type": "switch",
+                    "value": false
+                },
+                "is_protected": {
+                    "class": "col-span-4 md:col-span-2",
+                    "label": "Protected",
+                    "type": "switch",
+                    "value": false
+                }
+            }
         },
-        "name": {
-            "class": "",
-            "label": "Name",
-            "placeholder": "Required",
-            "required": true
+
+        "account_section": {
+            "class": "gap-5 grid grid-cols-12",
+            "heading": "Account Details",
+            "precontent": {
+                "body": "Provide the user's profile information and email address.",
+                "class": "text-neutral text-sm"
+            },
+            "type": "section",
+            "fields": {
+                "name": {
+                    "class": "col-span-12 md:col-span-6",
+                    "label": "Full Name",
+                    "placeholder": "Required",
+                    "source": "profile.first_name",
+                    "required": true
+                },
+                "email": {
+                    "class": "col-span-12 md:col-span-6",
+                    "label": "Email Address",
+                    "placeholder": "Required",
+                    "type": "email"
+                },
+                "username": {
+                    "class": "col-span-12 md:col-span-6",
+                    "label": "Secondary Email",
+                    "placeholder": "Optional",
+                    "secure": {
+                        "config": "enraiged.auth.allow_secondary_credential"
+                    },
+                    "type": "email"
+                },
+                "phone": {
+                    "class": "col-span-12 md:col-span-6",
+                    "label": "Phone Number",
+                    "placeholder": "Optional",
+                    "type": "phone"
+                },
+                "country_id": {
+                    "autoselect": true,
+                    "class": "col-span-12 lg:col-span-6",
+                    "label": "Country",
+                    "options": {
+                        "route": "geo.countries.available"
+                    },
+                    "placeholder": "Recommended",
+                    "searchable": true,
+                    "type": "select"
+                },
+                "timezone": {
+                    "class": "col-span-12 lg:col-span-6",
+                    "label": "Timezone",
+                    "options": {
+                        "params": ["country_id"],
+                        "route": "geo.timezones.available"
+                    },
+                    "placeholder": "Recommended",
+                    "searchable": true,
+                    "type": "select"
+                }
+            }
         },
-        "email": {
-            "class": "",
-            "label": "Email",
-            "placeholder": "Required",
-            "required": true,
-            "type": "email"
-        },
-        "username": {
-            "class": "",
-            "label": "Secondary Email",
-            "placeholder": "Optional",
-            "type": "email"
-        },
-        "password": {
-            "class": "",
-            "feedback": true,
-            "label": "Password",
-            "placeholder": "Required",
-            "type": "password",
-            "unmask": true
-        },
-        "password_confirmation": {
-            "class": "",
-            "disabledUnless": "password",
-            "label": "Confirm Password",
-            "placeholder": "Required",
-            "type": "password"
+
+        "password_section": {
+            "class": "gap-5 grid grid-cols-12",
+            "heading": "Account Password",
+            "precontent": {
+                "body": "Provide and confirm the user's account password.",
+                "class": "text-neutral text-sm"
+            },
+            "type": "section",
+            "fields": {
+                "password": {
+                    "class": "col-span-12 lg:col-span-6",
+                    "feedback": true,
+                    "label": "Password",
+                    "placeholder": "Required",
+                    "type": "password",
+                    "unmask": true
+                },
+                "password_confirmation": {
+                    "class": "col-span-12 lg:col-span-6",
+                    "disabledUnless": "password",
+                    "label": "Confirm Password",
+                    "placeholder": "Required",
+                    "type": "password"
+                }
+            }
         }
     }
 }
