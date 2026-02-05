@@ -53,7 +53,7 @@ class UserServiceProvider extends ServiceProvider
         );
 
         Event::listen(
-            \Enraiged\NetworkAddresses\Events\LoginAddress::class,
+            \Enraiged\Network\Events\LoginAddress::class,
             \Enraiged\Users\Listeners\LoginAddressListener::class,
         );
 

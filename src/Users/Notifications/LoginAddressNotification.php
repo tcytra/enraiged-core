@@ -2,7 +2,7 @@
 
 namespace Enraiged\Users\Notifications;
 
-use Enraiged\NetworkAddresses\Models\IpAddress;
+use Enraiged\Network\Models\IpAddress;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -15,7 +15,7 @@ class LoginAddressNotification extends Notification implements ShouldQueue
     /**
      *  Create an instance of the LoginAddressNotification.
      *
-     *  @param  \Enraiged\NetworkAddresses\Models\IpAddress  $ipAddress
+     *  @param  \Enraiged\Network\Models\IpAddress  $ipAddress
      */
     public function __construct(
         private IpAddress $ipAddress,
