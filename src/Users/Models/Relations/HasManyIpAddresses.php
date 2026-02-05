@@ -2,12 +2,12 @@
 
 namespace Enraiged\Users\Models\Relations;
 
-use Enraiged\NetworkAddresses\Events\LoginAddress;
-use Enraiged\NetworkAddresses\Models\IpAddress;
+use Enraiged\Network\Events\LoginAddress;
+use Enraiged\Network\Models\IpAddress;
 use Enraiged\Users\Notifications\LoginAddressNotification;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-trait HasNetworkAddresses
+trait HasManyIpAddresses
 {
     /**
      *  @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -43,7 +43,7 @@ trait HasNetworkAddresses
     /**
      *  Send the new login address notification.
      *
-     *  @param  \Enraiged\NetworkAddresses\Models\IpAddress  $ipAddress
+     *  @param  \Enraiged\Network\Models\IpAddress  $ipAddress
      *  @return void
      */
     public function sendLoginAddressNotification(IpAddress $ipAddress)

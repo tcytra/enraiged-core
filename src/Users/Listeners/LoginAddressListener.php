@@ -2,7 +2,7 @@
 
 namespace Enraiged\Users\Listeners;
 
-use Enraiged\NetworkAddresses\Events\LoginAddress;
+use Enraiged\Network\Events\LoginAddress;
 
 class LoginAddressListener
 {
