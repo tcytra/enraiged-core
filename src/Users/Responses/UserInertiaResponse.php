@@ -27,7 +27,7 @@ class UserInertiaResponse
      */
     public static function Render($request, $user, $component, $props = []): InertiaResponse
     {
-        $form = $user->form($request);
+        //$form = $user->form($request);
         $request = RequestCollection::from($request);
 
         $actions = $user->actions(self::$actions)
@@ -37,7 +37,7 @@ class UserInertiaResponse
         $props = [
             'actions' => $actions,
             'allowSelfDelete' => $user->allowSelfDelete,
-            'form' => $form->template(),
+            //'form' => $form->template(),
             'isMyProfile' => $user->isMyself,
             'isProtectedUser' => $user->isProtected,
             'mustVerifyEmail' => $user->mustVerifyEmail,

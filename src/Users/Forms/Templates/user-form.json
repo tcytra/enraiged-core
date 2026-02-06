@@ -15,6 +15,10 @@
             },
             "type": "section",
             "fields": {
+                "timezone_region_id": {
+                    "type": "hidden",
+                    "value": 2
+                },
                 "role_id": {
                     "class": "col-span-12 md:col-span-6",
                     "label": "Role",
@@ -35,12 +39,18 @@
                 },
                 "is_hidden": {
                     "class": "col-span-4 md:col-span-2",
+                    "hiddenUnless": {
+                        "role_id": 1
+                    },
                     "label": "Hidden",
                     "type": "switch",
                     "value": false
                 },
                 "is_protected": {
                     "class": "col-span-4 md:col-span-2",
+                    "hiddenUnless": {
+                        "role_id": 1
+                    },
                     "label": "Protected",
                     "type": "switch",
                     "value": false
@@ -64,6 +74,18 @@
                     "source": "profile.first_name",
                     "required": true
                 },
+                "phone": {
+                    "class": "col-span-6 md:col-span-3",
+                    "label": "Phone Number",
+                    "placeholder": "Optional",
+                    "type": "phone"
+                },
+                "birthday": {
+                    "class": "col-span-6 md:col-span-3",
+                    "label": "Date of Birth",
+                    "placeholder": "Optional",
+                    "type": "datepicker"
+                },
                 "email": {
                     "class": "col-span-12 md:col-span-6",
                     "label": "Email Address",
@@ -79,15 +101,10 @@
                     },
                     "type": "email"
                 },
-                "phone": {
-                    "class": "col-span-12 md:col-span-6",
-                    "label": "Phone Number",
-                    "placeholder": "Optional",
-                    "type": "phone"
-                },
                 "country_id": {
-                    "autoselect": true,
+                    "break": true,
                     "class": "col-span-12 lg:col-span-6",
+                    "clearable": true,
                     "label": "Country",
                     "options": {
                         "route": "geo.countries.available"
@@ -98,9 +115,10 @@
                 },
                 "timezone": {
                     "class": "col-span-12 lg:col-span-6",
+                    "clearable": true,
                     "label": "Timezone",
                     "options": {
-                        "params": ["country_id"],
+                        "params": ["country_id", "timezone_region_id"],
                         "route": "geo.timezones.available"
                     },
                     "placeholder": "Recommended",

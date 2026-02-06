@@ -2,6 +2,8 @@
 
 namespace Enraiged\Users\Factories;
 
+use DateTimeZone;
+use Enraiged\Geo\Models\Address;
 use Enraiged\Profiles\Models\Profile;
 use Enraiged\Users\Enums\Roles;
 use Enraiged\Users\Models\User;
@@ -27,16 +29,26 @@ class UserFactory extends Factory
         $profile = Profile::factory()
             ->create();
 
+        $address = Address::factory()
+            ->for($profile, 'addressable')
+            ->create();
+
+        $country = $address->country;
+
+        $timezone = collect(DateTimeZone::listIdentifiers(DateTimeZone::PER_COUNTRY, $country->code))
+            ->random();
+
         $roles = config('auth.providers.roles.enum', Roles::class);
 
         return [
             'profile_id' => $profile->id,
             'role_id' => $roles::lowest()->role()->id,
             'email' => preg_replace('/^.*@/', strtolower("{$profile->first_name}.{$profile->last_name}@"), $this->faker->unique()->safeEmail()),
+            'email_verified_at' => now(),
             'name' => "{$profile->first_name} {$profile->last_name}",
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
-            'email_verified_at' => now(),
+            'timezone' => $timezone,
         ];
     }
 

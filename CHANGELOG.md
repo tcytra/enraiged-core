@@ -4,6 +4,7 @@
 Update: 
 
 - Added Enraiged\Geo system for handling countries,regions,timeszones
+- Added Enraiged\Geo\Address as Profile addressable morph relation
 - Corrected issue preventing protected administrator editing,updating
 - Corrections,improvements to the User Roles enum
 - Corrections,improvements to the Profile Salutations enum

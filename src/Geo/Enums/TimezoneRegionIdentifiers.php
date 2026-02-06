@@ -4,7 +4,7 @@ namespace Enraiged\Geo\Enums;
 
 use Enraiged\Enums\Traits\StaticMethods;
 
-enum TimezoneIdentifier: int
+enum TimezoneRegionIdentifiers: int
 {
     use StaticMethods;
 

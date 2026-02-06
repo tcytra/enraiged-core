@@ -47,7 +47,6 @@ class User extends Authenticatable implements ProvidesActions, ProvidesForm
         'locale',
         'name',
         'password',
-        'phone',
         'profile_id',
         'role_id',
         'theme',

@@ -2,6 +2,7 @@
 
 namespace Enraiged\Users\Observers;
 
+use Enraiged\Users\Enums\Roles;
 use Enraiged\Users\Models\User;
 use Enraiged\Users\Notifications\LoginChangeNotification;
 
@@ -36,6 +37,14 @@ class UserObserver
      */
     public function saving(User $user)
     {
+        $admin = config('auth.providers.roles.admin', 'Administrator');
+        $roles = config('auth.providers.roles.enum', Roles::class);
+
+        if (!$user->role->is($roles::find($admin))) {
+            $user->is_hidden = false;
+            $user->is_protected = false;
+        }
+
         if ($user->isDirty('email')) {
             $user->email = strtolower($user->email);
             $user->email_verified_at = null;

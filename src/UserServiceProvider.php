@@ -2,6 +2,8 @@
 
 namespace Enraiged;
 
+use Enraiged\Geo\Models\Address;
+use Enraiged\Geo\Observers\AddressObserver;
 use Enraiged\Profiles\Models\Profile;
 use Enraiged\Profiles\Observers\ProfileObserver;
 use Enraiged\Profiles\Policies\ProfilePolicy;
@@ -34,6 +36,8 @@ class UserServiceProvider extends ServiceProvider
         $model = config('auth.providers.users.model');
 
         $model::observe(UserObserver::class);
+
+        Address::observe(AddressObserver::class);
 
         Profile::observe(ProfileObserver::class);
 
