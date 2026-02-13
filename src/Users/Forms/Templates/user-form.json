@@ -1,5 +1,5 @@
 {
-    "class": "gap-5 grid grid-cols-12 horizontal",
+    "class": "horizontal",
     "heading": "Please provide the following:",
     "fields": {
         "administration_section": {
@@ -15,10 +15,6 @@
             },
             "type": "section",
             "fields": {
-                "timezone_region_id": {
-                    "type": "hidden",
-                    "value": 2
-                },
                 "role_id": {
                     "class": "col-span-12 md:col-span-6",
                     "label": "Role",
@@ -35,7 +31,6 @@
                     "label": "Active",
                     "type": "switch",
                     "value": true
-
                 },
                 "is_hidden": {
                     "class": "col-span-4 md:col-span-2",
@@ -67,6 +62,10 @@
             },
             "type": "section",
             "fields": {
+                "timezone_region_id": {
+                    "type": "hidden",
+                    "value": 2
+                },
                 "name": {
                     "class": "col-span-12 md:col-span-6",
                     "label": "Full Name",
@@ -78,18 +77,22 @@
                     "class": "col-span-6 md:col-span-3",
                     "label": "Phone Number",
                     "placeholder": "Optional",
+                    "source": "profile.phone",
                     "type": "phone"
                 },
-                "birthday": {
+                "birthdate": {
                     "class": "col-span-6 md:col-span-3",
+                    "format": "M d yy",
                     "label": "Date of Birth",
                     "placeholder": "Optional",
+                    "source": "profile.birthdate",
                     "type": "datepicker"
                 },
                 "email": {
                     "class": "col-span-12 md:col-span-6",
                     "label": "Email Address",
                     "placeholder": "Required",
+                    "required": true,
                     "type": "email"
                 },
                 "username": {
@@ -111,6 +114,7 @@
                     },
                     "placeholder": "Recommended",
                     "searchable": true,
+                    "source": "profile.address.country.id",
                     "type": "select"
                 },
                 "timezone": {
@@ -142,6 +146,7 @@
                     "feedback": true,
                     "label": "Password",
                     "placeholder": "Required",
+                    "required": true,
                     "type": "password",
                     "unmask": true
                 },
@@ -150,6 +155,7 @@
                     "disabledUnless": "password",
                     "label": "Confirm Password",
                     "placeholder": "Required",
+                    "required": true,
                     "type": "password"
                 }
             }

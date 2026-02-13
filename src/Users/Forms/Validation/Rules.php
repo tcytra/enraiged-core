@@ -12,11 +12,11 @@ trait Rules
 {
     /** @var  array  the validation rules that apply to the request. */
     protected $rules = [
-        'birthday' => 'nullable|date',
+        'birthdate' => 'nullable|date',
         'country_id' => 'nullable|int|exists:countries,id',
         'is_active' => 'boolean',
         'name' => 'required|string|max:255',
-        'phone' => 'nullable|string|max:12',
+        'phone' => 'nullable|string|max:16',
         'salut' => 'nullable|string',
         'theme' => 'array',
         'timezone' => 'nullable|timezone',
@@ -137,7 +137,7 @@ trait Rules
 
         $rules = [
             'password' => [
-                $user->exists ? 'sometimes' : 'required',
+                $user->exists ? 'nullable' : 'required',
                 'confirmed',
                 new PasswordRules],
         ];

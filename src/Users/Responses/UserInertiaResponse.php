@@ -27,7 +27,6 @@ class UserInertiaResponse
      */
     public static function Render($request, $user, $component, $props = []): InertiaResponse
     {
-        //$form = $user->form($request);
         $request = RequestCollection::from($request);
 
         $actions = $user->actions(self::$actions)
