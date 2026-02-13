@@ -30,6 +30,18 @@ class UserObserver
     }
 
     /**
+     *  Handle the User deleted event.
+     *
+     *  @param  \Enraiged\Users\Models\User  $user
+     *  @return void
+     */
+    public function deleted(User $user)
+    {
+        $user->is_active = false;
+        $user->save();
+    }
+
+    /**
      *  Handle the User saving event.
      *
      *  @param  \Enraiged\Users\Models\User  $user
