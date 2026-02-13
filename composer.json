@@ -22,7 +22,11 @@
     "autoload": {
         "psr-4": {
             "Enraiged\\": "src/"
-        }
+        },
+        "files": [
+            "helpers/dates.php",
+            "helpers/utility.php"
+        ]
     },
     "scripts": {
         "post-update-cmd": [
