@@ -7,6 +7,19 @@ use Enraiged\Profiles\Models\Profile;
 class ProfileObserver
 {
     /**
+     *  Handle the Profile saving event.
+     *
+     *  @param  \Enraiged\Profiles\Models\Profile  $profile
+     *  @return void
+     */
+    public function saving(Profile $profile)
+    {
+        if ($profile->birthdate) {
+            $profile->birthdate = date('Y-m-d', strtotime($profile->birthdate));
+        }
+    }
+
+    /**
      *  Handle the Profile updated event.
      *
      *  @param  \Enraiged\Profiles\Models\Profile  $profile
