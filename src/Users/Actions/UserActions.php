@@ -1,13 +1,13 @@
 <?php
 
-namespace Enraiged\Users\Collections;
+namespace Enraiged\Users\Actions;
 
 use Enraiged\Collections\ActionsCollection;
 use Enraiged\Collections\RequestCollection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Route;
 
-class UserActionsCollection extends ActionsCollection
+class UserActions extends ActionsCollection
 {
     /** @var  string  The template json file path. */
     protected string $template = __DIR__.'/Templates/actions.json';

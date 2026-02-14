@@ -6,9 +6,9 @@
         "tooltip": "Create new user"
     },
     "impersonate": {
-        "class": "background-warning",
         "icon": "pi pi-sign-in",
         "label": "Login",
+        "severity": "help",
         "tooltip": "Impersonate user"
     },
     "show": {
@@ -34,7 +34,6 @@
         "tooltip": "Delete user"
     },
     "restore": {
-        "class": "background-success",
         "confirm": "Are you sure you want to restore this user?",
         "icon": "pi pi-trash",
         "label": "Restore",
@@ -43,6 +42,8 @@
             "method": "patch",
             "name": "users.restore",
             "redirect": "default"
-        }
+        },
+        "severity": "success",
+        "tooltip": "Restore user"
     }
 }

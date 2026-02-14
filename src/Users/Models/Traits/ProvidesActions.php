@@ -3,7 +3,7 @@
 namespace Enraiged\Users\Models\Traits;
 
 use Enraiged\Collections\ActionsCollection;
-use Enraiged\Users\Collections\UserActionsCollection;
+use Enraiged\Users\Actions\UserActions;
 
 trait ProvidesActions
 {
@@ -14,7 +14,7 @@ trait ProvidesActions
      *  Assemble and return the available actions.
      *
      *  @param  array|string   $items
-     *  @return \Enraiged\Users\Collections\UserActionsCollection
+     *  @return \Enraiged\Users\Actions\UserActions
      */
     public function actions(array|string $items): ActionsCollection
     {
@@ -26,7 +26,7 @@ trait ProvidesActions
             'user' => $this->id,
         ];
 
-        return (new UserActionsCollection($items))
+        return (new UserActions($items))
             ->model($this, $parameters);
     }
 }

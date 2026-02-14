@@ -1,7 +1,7 @@
 # Enraiged Core Release Notes
 
-2026-02-13 : 0.4.0-beta.10 (prerelease)  
-Update: 
+2026-02-14 : 0.4.0-beta.10 (prerelease)  
+Update: Added Enraiged Geo system; Improvements to the User form handling
 
 - Added Enraiged\Geo system for handling countries,regions,timeszones
 - Added Enraiged\Geo\Address as Profile addressable morph relation
@@ -12,6 +12,7 @@ Update:
 - Readded various dates,utility helpers
 - Rebuild the user form template; Readded original sections
 - Refactored Enraiged\NetworkAddresses namespace to Enraiged\Network
+- Refactored Enraiged\Users\Collections to Enraiged\Users\Actions
 
 ---
 
