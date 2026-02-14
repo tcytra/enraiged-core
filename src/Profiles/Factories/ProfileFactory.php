@@ -36,6 +36,9 @@ class ProfileFactory extends Factory
             'gender' => (mt_rand(0, 10) === 0) // 10% of the time
                 ? $gender->name
                 : null,
+            'phone' => (mt_rand(0, 5) === 0) // 20% of the time
+                ? $this->faker->phoneNumber
+                : null,
             'salut' => (mt_rand(0, 5) === 0) // 20% of the time
                 ? $salut->name
                 : null,
