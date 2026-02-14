@@ -26,10 +26,15 @@ class IndexResource extends UserResource
             'locale' => $this->locale,
             'last_name' => $this->profile->last_name,
             'name' => $this->name,
+            'phone' => $this->profile->phone,
             'username' => $this->username,
             'role' => $this->role ? $this->role->name : null,
             'status' => $this->status(),
         ];
+
+        if ($this->profile->address && $this->profile->address->country) {
+            $resource['country_name'] = $this->profile->address->country->name;
+        }
 
         if ($this->resource->actions) {
             $resource['actions'] = $this->actions;

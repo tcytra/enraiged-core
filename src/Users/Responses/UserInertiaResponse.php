@@ -13,7 +13,8 @@ class UserInertiaResponse
         'impersonate' => 'p-button-text text-help',
         'show' => 'p-button-text text-info',
         'edit' => 'p-button-text text-warning',
-        //'delete' => 'p-button-text text-danger',
+        'delete' => 'p-button-text text-danger',
+        'restore' => 'p-button-text text-success',
     ];
 
     /**
@@ -36,7 +37,6 @@ class UserInertiaResponse
         $props = [
             'actions' => $actions,
             'allowSelfDelete' => $user->allowSelfDelete,
-            //'form' => $form->template(),
             'isMyProfile' => $user->isMyself,
             'isProtectedUser' => $user->isProtected,
             'mustVerifyEmail' => $user->mustVerifyEmail,

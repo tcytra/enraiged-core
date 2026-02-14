@@ -29,6 +29,11 @@
             "class": "p-button-rounded p-button-text text-danger",
             "type": "row",
             "variant": "text"
+        },
+        "restore": {
+            "class": "p-button-rounded p-button-text text-success",
+            "type": "row",
+            "variant": "text"
         }
     },
     "columns": {
@@ -43,13 +48,23 @@
             "searchable": true,
             "sortable": true
         },
+        "role": {
+            "label": "Role"
+        },
         "email": {
             "label": "Email",
             "searchable": true,
             "sortable": true
         },
-        "role": {
-            "label": "Role"
+        "phone": {
+            "label": "Phone",
+            "searchable": true,
+            "source": "profiles.phone"
+        },
+        "country_name": {
+            "label": "Country",
+            "sortable": true,
+            "source": "countries.name"
         },
         "created_at": {
             "label": "Created",
@@ -59,7 +74,7 @@
         "status": {
             "class": "text-center",
             "custom": true,
-            "label": "Active",
+            "label": "Status",
             "source": "status"
         }
     },
@@ -73,13 +88,19 @@
         "stamp": "Y-m-d "
     },
     "filters": {
-        "active": {
-            "boolean": true,
-            "label": "Is Active",
-            "labelOff": "Inactive",
-            "source": "users.is_active",
-            "type": "toggle",
-            "value": true
+        "status": {
+            "class": "w-[192px]",
+            "clearable": true,
+            "options": {
+                "values": [
+                    {"id": "active", "name": "Active Users"},
+                    {"id": "inactive", "name": "Inactive Users"},
+                    {"id": "deleted", "name": "Deleted Users"}
+                ]
+            },
+            "placeholder": "Status Filter",
+            "type": "select",
+            "value": "active"
         }
     },
     "pagination": {
