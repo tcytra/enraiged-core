@@ -164,7 +164,7 @@ trait Rules
         }
 
         if ($this->filled('country_id') && $country = Country::find($this->get('country_id'))) {
-            $rules['timezone'] = "{$rules['timezone']}:per_country,{$country->code}";
+            $rules['timezone'] = "{$rules['timezone']}|timezone:per_country,{$country->code}";
         }
 
         return $this->attribute
