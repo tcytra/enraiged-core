@@ -31,6 +31,12 @@ class UserActions extends ActionsCollection
 
         if ($model->isMyself) {
             foreach ($this->items as $action => $parameters) {
+                if (!is_array($parameters)) {
+                    $this->items[$action] = ['class' => $parameters];
+
+                    $parameters = $this->items[$action];
+                }
+
                 $route = key_exists('route', $parameters) ? $parameters['route'] : [];
 
                 $parameters['route'] = [
