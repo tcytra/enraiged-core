@@ -48,22 +48,4 @@ class UserResource extends JsonResource
 
         return $resource;
     }
-
-    /**
-     *  Determine the dynamic status of the user.
-     *
-     *  @return string
-     */
-    protected function status(): string
-    {
-        if ($this->isDeleted) {
-            return 'deleted';
-        }
-
-        if (!$this->isActive) {
-            return 'inactive';
-        }
-
-        return 'active';
-    }
 }
