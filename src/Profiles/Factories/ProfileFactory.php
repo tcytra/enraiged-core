@@ -37,7 +37,7 @@ class ProfileFactory extends Factory
                 ? $gender->name
                 : null,
             'phone' => (mt_rand(0, 5) === 0) // 20% of the time
-                ? $this->faker->phoneNumber
+                ? preg_replace('/[^\d]/', '', $this->faker->phoneNumber)
                 : null,
             'salut' => (mt_rand(0, 5) === 0) // 20% of the time
                 ? $salut->name
