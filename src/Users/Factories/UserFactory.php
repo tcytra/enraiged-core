@@ -13,8 +13,14 @@ use Illuminate\Support\Str;
 
 class UserFactory extends Factory
 {
+    /** @var  string  The name of the factory's corresponding profile model. */
+    protected $address = Address::class;
+
     /** @var  string  The name of the factory's corresponding model. */
     protected $model = User::class;
+
+    /** @var  string  The name of the factory's corresponding profile model. */
+    protected $profile = Profile::class;
 
     /** @var  string  The current password being used by the factory. */
     protected static ?string $password;
@@ -26,10 +32,10 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $profile = Profile::factory()
+        $profile = $this->profile::factory()
             ->create();
 
-        $address = Address::factory()
+        $address = $this->address::factory()
             ->for($profile, 'addressable')
             ->create();
 
