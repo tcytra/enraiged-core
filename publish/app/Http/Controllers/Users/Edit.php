@@ -13,8 +13,7 @@ class Edit extends Controller
     use AuthorizesRequests;
 
     /**
-     *  Display the user's profile forms.
-     *
+     *  @param  \Illuminate\Http\Request  $request
      *  @return \Inertia\Response
      */
     public function __invoke(Request $request): InertiaResponse
@@ -27,6 +26,11 @@ class Edit extends Controller
 
         $this->authorize('edit', $user);
 
-        return UserInertiaResponse::render($request, $user, 'users/Edit');
+        return UserInertiaResponse::render(
+            $request,
+            $user,
+            'users/Edit',
+            ['form' => $user->form($request)->template()]
+        );
     }
 }

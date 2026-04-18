@@ -18,9 +18,11 @@ class DatabaseSeeder extends Seeder
     public function run(): void
     {
         if (!app()->environment('production')) {
-            // Artisan::call('storage:clear');
+            Artisan::call('storage:clear');
 
             $this->call([
+                Geo\CountriesSeeder::class,
+                Geo\RegionsSeeder::class,
                 UserSeeder::class,
             ]);
         }

@@ -15,8 +15,6 @@ class Destroy extends Controller
     use AuthorizesRequests;
 
     /**
-     *  Delete the user's account.
-     *
      *  @param  \Illuminate\Http\Request  $request
      *  @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse;
      */
@@ -30,7 +28,7 @@ class Destroy extends Controller
 
         $this->authorize('delete', $user);
 
-        $message = $user->isMyself ? 'Your account has been deleted.' : 'The user has been deleted.';
+        $message = _($user->isMyself ? 'Your account has been deleted.' : 'The user has been deleted.');
         $status = $user->isMyself ? 205 : 200;
 
         if ($user->is_protected) {
@@ -51,13 +49,21 @@ class Destroy extends Controller
             $user->delete();
         }
 
+        $redirect = $user->isMyself
+            ? '/'
+            : $this->route('users.index');
+
         if ($request->expectsJson()) {
             return response()
-                ->json(['success' => $message], $status);
+                ->json([
+                    'message' => $message,
+                    'redirect' => $redirect,
+                    'success' => true,
+                ], $status);
         }
 
         return $user->isMyself
             ? redirect()->to('/')
-            : to_route('dashboard', ['success' => $message]);
+            : redirect($redirect)->with('message', $message);
     }
 }

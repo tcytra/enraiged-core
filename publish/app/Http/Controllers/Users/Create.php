@@ -12,8 +12,7 @@ class Create extends Controller
     use AuthorizesRequests;
 
     /**
-     *  Display the user's profile forms.
-     *
+     *  @param  \Illuminate\Http\Request  $request
      *  @return \Inertia\Response
      */
     public function __invoke(Request $request): InertiaResponse
@@ -25,11 +24,7 @@ class Create extends Controller
         $user = (new $model);
 
         $props = [
-            'form' => $user->form($request)
-                ->fieldIf('email', ['label' => 'Primary Email'], $user->allowSecondaryCredential)
-                ->fieldIf('username', ['label' => 'Secondary Email or Username', 'type' => 'text'], $user->allowUsernameLogin)
-                ->removeIf('username', !$user->allowSecondaryCredential)
-                ->template(),
+            'form' => $user->form($request)->template(),
         ];
 
         return inertia('users/Create', $props);

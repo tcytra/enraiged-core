@@ -2,9 +2,11 @@
 
 namespace App\Http\Requests\Users;
 
-use Enraiged\Users\Forms\Validation\Messages;
-use Enraiged\Users\Forms\Validation\Rules;
+use App\Packages\Users\Forms\Validation\Messages;
+use App\Packages\Users\Forms\Validation\Rules;
+use Enraiged\Geo\Models\Address;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\DB;
 
 class UpdateRequest extends FormRequest
 {
@@ -13,8 +15,8 @@ class UpdateRequest extends FormRequest
     /**
      *  Update and return the User with the requested attributes.
      *
-     *  @param  \Enraiged\Users\Models\User
-     *  @return \Enraiged\Users\Models\User
+     *  @param  \App\Packages\Users\Models\User
+     *  @return \App\Packages\Users\Models\User
      */
     public function updateUser($user)
     {
@@ -26,21 +28,38 @@ class UpdateRequest extends FormRequest
             $validated['last_name'] = count($names) ? implode(' ', $names) : null;
         }
 
-        $attributes = collect($validated);
+        return DB::transaction(function () use ($user, $validated) {
+            $attributes = collect($validated);
 
-        $user
-            ->fill($attributes
-                ->only($user->getFillable())
-                ->toArray())
-            ->save();
+            $user
+                ->fill($attributes
+                    ->only($user->getFillable())
+                    ->toArray())
+                ->save();
 
-        $user->profile
-            ->fill($attributes
-                ->only($user->profile->getFillable())
-                ->toArray())
-            ->save();
+            $user->profile
+                ->fill($attributes
+                    ->only($user->profile->getFillable())
+                    ->toArray())
+                ->save();
 
-        return $user;
+            $address_attributes = $attributes
+                ->only((new Address)->getFillable());
+
+            if ($address_attributes->filter(fn ($value) => !is_null($value))->count()) {
+                if ($user->profile->address) {
+                    $user->profile->address
+                        ->fill($address_attributes->toArray())
+                        ->save();
+
+                } else {
+                    $user->profile->address()
+                        ->create($address_attributes->toArray());
+                }
+            }
+
+            return $user;
+        });
     }
 
     /**
@@ -50,10 +69,11 @@ class UpdateRequest extends FormRequest
      *  @param  mixed  $default
      *  @return mixed
      */
+    #[\Override]
     public function validated($key = null, $default = null)
     {
         return $this->attribute
-            ? [$this->attribute => parent::validated($this->attribute)]
-            : parent::validated();
+            ? [$this->attribute => parent::validated($this->attribute, $default)]
+            : parent::validated($key, $default);
     }
 }

@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests\Auth\Register;
 
+use App\Packages\Profiles\Models\Profile;
+use App\Packages\Users\Enums\Roles;
 use Enraiged\Passwords\Forms\Validation\PasswordRules;
-use Enraiged\Profiles\Models\Profile;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -55,7 +56,10 @@ class Request extends FormRequest
             $validated['last_name'] = count($names) ? implode(' ', $names) : null;
         }
 
-        $attributes = collect($validated);
+        $roles = config('auth.providers.roles.enum', Roles::class);
+
+        $attributes = collect($validated)
+            ->merge(['role_id' => $roles::lowest()->role()->id]);
 
         $model = config('auth.providers.users.model');
 
