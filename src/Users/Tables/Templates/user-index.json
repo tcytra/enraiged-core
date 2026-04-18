@@ -88,6 +88,17 @@
         "stamp": "Y-m-d "
     },
     "filters": {
+        "role_id": {
+            "class": "w-[192px]",
+            "clearable": true,
+            "options": {
+                "source": "Enraiged\\Users\\Enums\\Roles",
+                "type": "enum"
+            },
+            "placeholder": "Filter Role",
+            "type": "select",
+            "value": "active"
+        },
         "status": {
             "class": "w-[192px]",
             "clearable": true,
