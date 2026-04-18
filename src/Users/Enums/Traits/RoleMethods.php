@@ -73,7 +73,7 @@ trait RoleMethods
      */
     public function is($role): bool
     {
-        return $this === $role;
+        return $this->name === $role->name;
     }
 
     /**
@@ -84,7 +84,7 @@ trait RoleMethods
      */
     public function isNot($role): bool
     {
-        return $this !== $role;
+        return $this->name !== $role->name;
     }
 
     /**
