@@ -1,7 +1,8 @@
 <?php
 
-namespace Enraiged\Users\Forms\Validation;
+namespace App\Packages\Users\Forms\Validation;
 
+use App\Packages\Users\Models\User;
 use Enraiged\Geo\Models\Country;
 use Enraiged\Passwords\Forms\Validation\PasswordRules;
 use Enraiged\Users\Enums\Roles;
@@ -12,24 +13,22 @@ trait Rules
 {
     /** @var  array  the validation rules that apply to the request. */
     protected $rules = [
-        'birthdate' => 'nullable|date',
-        'country_id' => 'nullable|int|exists:countries,id',
         'is_active' => 'boolean',
         'name' => 'required|string|max:255',
         'phone' => 'nullable|string|max:16',
         'salut' => 'nullable|string',
         'theme' => 'array',
-        'timezone' => 'nullable|timezone',
+        'timezone' => 'nullable|string|max:100',
     ];
 
     /**
      *  Assemble and return the email validation rule for the request.
      *
-     *  @param  \Enraiged\Users\Models\User  $user
-     *  @param  \Enraiged\Users\Enums\Roles  $roles
+     *  @param  \App\Packages\Users\Models\User  $user
+     *  @param  string  $roles
      *  @return array
      */
-    protected function validateEmailRule($user, $roles)
+    protected function validateEmailRule(User $user, string $roles)
     {
         $table = $user->getTable();
 
@@ -46,11 +45,11 @@ trait Rules
     /**
      *  Assemble and return the locale validation rule for the request.
      *
-     *  @param  \Enraiged\Users\Models\User  $user
-     *  @param  \Enraiged\Users\Enums\Roles  $roles
+     *  @param  \App\Packages\Users\Models\User  $user
+     *  @param  string  $roles
      *  @return array
      */
-    protected function validateLocaleRule($user, $roles)
+    protected function validateLocaleRule(User $user, string $roles)
     {
         $locales = collect(config('enraiged.locales'))
             ->keys()
@@ -69,11 +68,11 @@ trait Rules
     /**
      *  Assemble and return the role_id validation rule for the request.
      *
-     *  @param  \Enraiged\Users\Models\User  $user
-     *  @param  \Enraiged\Users\Enums\Roles  $roles
+     *  @param  \App\Packages\Users\Models\User  $user
+     *  @param  string  $roles
      *  @return array|null
      */
-    protected function validateRoleIdRule($user, $roles)
+    protected function validateRoleIdRule(User $user, string $roles)
     {
         $admin = config('auth.providers.roles.admin', 'Administrator');
 
@@ -86,32 +85,6 @@ trait Rules
         }
 
         return null;
-    }
-
-    /**
-     *  Assemble and return the username validation rule for the request.
-     *
-     *  @param  \Enraiged\Users\Models\User  $user
-     *  @param  \Enraiged\Users\Enums\Roles  $roles
-     *  @return array
-     */
-    protected function validateUsernameRule($user, $roles)
-    {
-        $rules = ['nullable', 'string'];
-
-        if ($user->allowSecondaryCredential) {
-            $table = $user->getTable();
-
-            $rule = $user->exists
-                ? Rule::unique($table, 'username')->ignore($user->id)
-                : Rule::unique($table, 'username');
-
-            return $user->allowUsernameLogin
-                ? [...$rules, 'max:255', $rule]
-                : ['email', 'max:255', $rule];
-        }
-
-        return $rules;
     }
 
     /**
