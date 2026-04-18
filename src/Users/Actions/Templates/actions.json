@@ -38,10 +38,7 @@
         "icon": "pi pi-trash",
         "label": "Restore",
         "route": {
-            "api": true,
-            "method": "patch",
-            "name": "users.restore",
-            "redirect": "default"
+            "method": "patch"
         },
         "severity": "success",
         "tooltip": "Restore user"
