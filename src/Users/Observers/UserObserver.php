@@ -20,10 +20,6 @@ class UserObserver
             $user->locale = config('app.locale');
         }
 
-        if (is_null($user->theme)) {
-            $user->theme = json_encode(config('enraiged.theme'));
-        }
-
         if (is_null($user->timezone)) {
             $user->timezone = config('enraiged.app.timezone');
         }
