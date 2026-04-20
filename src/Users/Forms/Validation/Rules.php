@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Packages\Users\Forms\Validation;
+namespace Enraiged\Users\Forms\Validation;
 
-use App\Packages\Users\Models\User;
 use Enraiged\Geo\Models\Country;
 use Enraiged\Passwords\Forms\Validation\PasswordRules;
 use Enraiged\Users\Enums\Roles;
+use Enraiged\Users\Models\User;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
@@ -24,7 +24,7 @@ trait Rules
     /**
      *  Assemble and return the email validation rule for the request.
      *
-     *  @param  \App\Packages\Users\Models\User  $user
+     *  @param  \Enraiged\Users\Models\User  $user
      *  @param  string  $roles
      *  @return array
      */
@@ -45,7 +45,7 @@ trait Rules
     /**
      *  Assemble and return the locale validation rule for the request.
      *
-     *  @param  \App\Packages\Users\Models\User  $user
+     *  @param  \Enraiged\Users\Models\User  $user
      *  @param  string  $roles
      *  @return array
      */
@@ -68,7 +68,7 @@ trait Rules
     /**
      *  Assemble and return the role_id validation rule for the request.
      *
-     *  @param  \App\Packages\Users\Models\User  $user
+     *  @param  \Enraiged\Users\Models\User  $user
      *  @param  string  $roles
      *  @return array|null
      */

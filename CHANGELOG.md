@@ -1,5 +1,17 @@
 # Enraiged Core Release Notes
 
+2026-04-19 : 0.4.0-rc.1  
+Update: Testing,preparation in enraiged core for initial release
+
+- Added default UserServiceProvider to Enraiged\Users\Providers
+- Added role filter to the users index template
+- Corrected issues with Roles enum is,isNot methods
+- Improvements in the user validation rules
+- Resync enraiged-core publishable assets
+- Updated composer to allow laravel/framework v12 or v13
+
+---
+
 2026-02-14 : 0.4.0-beta.10 (prerelease)  
 Update: Added Enraiged/Geo; Improvements to the User form,index systems
 
