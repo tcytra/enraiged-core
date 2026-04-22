@@ -23,7 +23,9 @@ class Address extends Model
     protected $fillable = [
         'city',
         'country_id',
+        'is_billable',
         'is_default',
+        'is_deliverable',
         'notes',
         'postal',
         'region_id',
@@ -33,7 +35,9 @@ class Address extends Model
 
     /** @var  array  The attributes that should be cast. */
     protected $casts = [
+        'is_billable' => 'boolean',
         'is_default' => 'boolean',
+        'is_deliverable' => 'boolean',
     ];
 
     /**
