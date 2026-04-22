@@ -9,7 +9,7 @@ trait Name
      */
     public function getNameAttribute()
     {
-        return $this->user->name;
+        return $this->name();
     }
 
     /**

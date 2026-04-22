@@ -5,6 +5,7 @@ Update: Testing,preparation in enraiged core for initial release
 
 - Added email attribute to the profiles model fillable
 - Added is_{billable,deliverable} attribute to the address model
+- Corrected issue accessing name attribute in the profile model
 - Corrected issue with missing country_id when creating user
 
 ---
