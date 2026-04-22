@@ -31,6 +31,7 @@ class Profile extends Model implements AvatarableContract
         return [
             'alias',
             'birthdate',
+            'email',
             'first_name',
             'last_name',
             'phone',
