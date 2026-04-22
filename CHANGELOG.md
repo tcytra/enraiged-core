@@ -3,6 +3,7 @@
 2026-04-22 : 0.4.0-rc.2  
 Update: Testing,preparation in enraiged core for initial release
 
+- Added currency model to the geo system
 - Added email attribute to the profiles model fillable
 - Added is_{billable,deliverable} attribute to the address model
 - Corrected issue accessing name attribute in the profile model
