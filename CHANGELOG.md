@@ -1,7 +1,7 @@
 # Enraiged Core Release Notes
 
-2026-04-22 : 0.4.0-rc.2  
-Update: Testing,preparation in enraiged core for initial release
+2026-05-01 : 0.4.0  
+Update: Stable release 0.4.0
 
 - Added currency model to the geo system
 - Added email attribute to the profiles model fillable

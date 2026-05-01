@@ -44,11 +44,6 @@ class CoreServiceProvider extends ServiceProvider
         //);
 
         $this->publishes(
-            [__DIR__.'/../publish/app/Enums' => base_path('app/Enums')],
-            ['enraiged', 'enraiged-core', 'enraiged-core-enums'],
-        );
-
-        $this->publishes(
             [__DIR__.'/../publish/app/Http/Controllers' => base_path('app/Http/Controllers')],
             ['enraiged', 'enraiged-core', 'enraiged-core-controllers'],
         );
@@ -66,6 +61,11 @@ class CoreServiceProvider extends ServiceProvider
         $this->publishes(
             [__DIR__.'/../publish/app/Http/Resources' => base_path('app/Http/Resources')],
             ['enraiged', 'enraiged-core', 'enraiged-core-resources'],
+        );
+
+        $this->publishes(
+            [__DIR__.'/../publish/app/Packages' => base_path('app/Packages')],
+            ['enraiged', 'enraiged-core', 'enraiged-core-packages'],
         );
 
         $this->publishes(

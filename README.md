@@ -2,8 +2,6 @@
 
 **Enraiged Core provides the user/authentication systems required by Enraiged Laravel projects.**
 
-> **Please Note:** This package is currently a work in progress and not yet ready for production use.
-
 Enraiged Core is an aggregate library containing the core systems for Enraiged projects for handling users and 
 authtication. This package will update the default `users` database table with additional columns and create other 
 tables to provide a more robust set of available features and options for your Laravel project.
