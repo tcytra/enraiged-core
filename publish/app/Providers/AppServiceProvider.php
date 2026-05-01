@@ -7,15 +7,6 @@ use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /** @var  array  All of the container bindings that should be registered. */
-    public $bindings = [
-        \Enraiged\Profiles\Models\Profile::class
-            => \App\Packages\Profiles\Models\Profile::class,
-
-        \Enraiged\Users\Models\User::class
-            => \App\Packages\Users\Models\User::class,
-    ];
-
     /**
      *  Register any application services.
      *

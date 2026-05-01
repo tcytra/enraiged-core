@@ -1,6 +1,6 @@
 <?php
 
 return [
-    Enraiged\Users\Providers\UserServiceProvider::class,
+    App\Packages\Users\Providers\UserServiceProvider::class,
     App\Providers\AppServiceProvider::class,
 ];
