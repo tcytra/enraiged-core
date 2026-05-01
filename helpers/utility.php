@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
 
 if (!function_exists('dollar')) {
@@ -232,5 +233,18 @@ if (!function_exists('trim_lower')) {
         return $string
             ? strtolower(trim($string, $characters))
             : null;
+    }
+}
+
+if (!function_exists('user')) {
+    /**
+     *  Return the current authenticated user model.
+     *  
+     *  @param  string|null  $guard
+     *  @return mixed
+     */
+    function user($guard = null)
+    {
+        return Auth::guard($guard)->user();
     }
 }
